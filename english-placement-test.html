@@ -281,11 +281,13 @@
   }
   .gauge-bands{position:absolute;inset:0;display:flex;border-radius:99px;overflow:hidden;}
   .gauge-bands span{flex:1;border-right:2px solid #fff;}
-  .band-0{background:#EFC9C0;}
-  .band-1{background:#F0D9A8;}
-  .band-2{background:#E7DCA0;}
-  .band-3{background:#CFDCA6;}
-  .band-4{background:#A9C79A;}
+  .band-0{background:#F3DFAE;}
+  .band-1{background:#EFD59B;}
+  .band-2{background:#E6CB84;}
+  .band-3{background:#D3CC8A;}
+  .band-4{background:#BFCB8E;}
+  .band-5{background:#A8C48F;}
+  .band-6{background:#8FB885;}
   .gauge-marker{
     position:absolute;
     top:-6px;
@@ -411,16 +413,18 @@ const listeningQuestions = [
   {audioFile:"audio/Question_20.mp3", question:"Listen, then choose the best response.", options:["Yes, I did.","Yes, I am.","Yes, she did."], answer:0}
 ];
 
-const READING_POINTS = 1;
-const LISTENING_POINTS = 2;
-const MAX_POSSIBLE = readingQuestions.length*READING_POINTS + listeningQuestions.length*LISTENING_POINTS; // 33 + 40 = 73
+const READING_POINTS = 2;
+const LISTENING_POINTS = 3;
+const MAX_POSSIBLE = readingQuestions.length*READING_POINTS + listeningQuestions.length*LISTENING_POINTS; // 66 + 60 = 126
 
 const LEVELS = [
-  {name:"Beginner", code:"A1", min:0,  max:14, desc:"Just starting out with English. The program will focus on everyday words, simple sentences, and basic conversation skills."},
-  {name:"Elementary", code:"A2", min:15, max:29, desc:"Can handle simple, familiar topics. Ready to build core grammar, everyday vocabulary, and confidence speaking."},
-  {name:"Intermediate", code:"B1", min:30, max:44, desc:"Comfortable with everyday English. Ready to develop fluency and handle more complex, real-world topics."},
-  {name:"Upper Intermediate", code:"B2", min:45, max:59, desc:"Communicates confidently on a wide range of topics. Ready to refine nuance, accuracy, and professional English."},
-  {name:"Advanced", code:"C1", min:60, max:73, desc:"Strong command of English. Ready for specialized, professional-level coursework and native-paced material."}
+  {name:"Intro", code:"INTRO", min:0,  max:4,   desc:"Brand new to English. The program will start with foundational vocabulary, everyday phrases, and simple sentence structure."},
+  {name:"Level 1", code:"L1", min:5,  max:20,  desc:"Beginning to build a foundation. Ready to strengthen core grammar, everyday vocabulary, and simple conversation."},
+  {name:"Level 2", code:"L2", min:21, max:43,  desc:"Growing comfort with everyday English. Ready to expand vocabulary and practice more connected conversation."},
+  {name:"Level 3", code:"L3", min:44, max:62,  desc:"A solid grasp of everyday English. Ready to build fluency and take on more complex, real-world topics."},
+  {name:"Level 4", code:"L4", min:63, max:81,  desc:"Confident, capable English use across a range of situations. Ready to refine accuracy and nuance."},
+  {name:"Level 5", code:"L5", min:82, max:125, desc:"A strong, well-rounded command of English. Ready for advanced coursework and more specialized topics."},
+  {name:"Advanced Conversation Practice", code:"ACP", min:126, max:126, desc:"Highly proficient in English. Ready to focus on fluency, nuance, and natural conversation rather than foundational skills."}
 ];
 
 /* ---------------- STATE ---------------- */
@@ -538,8 +542,11 @@ function renderResults(){
   const total = state.rScore + state.lScore;
   const lvl = levelFor(total);
   const pct = Math.min(100, Math.round((total/MAX_POSSIBLE)*100));
-  const rMax = state.rAnswered; // max possible from questions actually attempted (1pt each)
-  const lMax = state.lAnswered*2;
+  const rMax = state.rAnswered*READING_POINTS;
+  const lMax = state.lAnswered*LISTENING_POINTS;
+
+  const bandsHtml = LEVELS.map((l,i)=>`<span class="band-${i}"></span>`).join('');
+  const labelsHtml = LEVELS.map(l=>`<span>${l.code}</span>`).join('');
 
   root.innerHTML = `
   <div class="card fade-in">
@@ -551,12 +558,12 @@ function renderResults(){
     <div class="gauge">
       <div class="gauge-track">
         <div class="gauge-bands">
-          <span class="band-0"></span><span class="band-1"></span><span class="band-2"></span><span class="band-3"></span><span class="band-4"></span>
+          ${bandsHtml}
         </div>
         <div class="gauge-marker" style="left:${pct}%"></div>
       </div>
       <div class="gauge-labels">
-        <span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span>
+        ${labelsHtml}
       </div>
     </div>
 
