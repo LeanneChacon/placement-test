@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FBF1E3;
-    --card:#FFFDF8;
-    --ink:#4A3226;
-    --text:#3E2F26;
-    --text-soft:#8C7B6C;
-    --line:#EADFCB;
-    --gold:#D9971E;
-    --gold-dark:#B87A16;
-    --berry:#C1546B;
-    --berry-dark:#A03E53;
-    --sage:#748C5B;
+    --paper:#F7FAF7;
+    --card:#FFFFFF;
+    --ink:#1F3A38;
+    --text:#28322F;
+    --text-soft:#6C7975;
+    --line:#E1E9E4;
+    --green:#71A943;
+    --green-dark:#567F32;
+    --teal:#178FAF;
+    --teal-dark:#106C85;
+    --sage:#71A943;
     --brick:#B5493F;
   }
   *{box-sizing:border-box;}
@@ -26,8 +26,8 @@
     font-family:'Nunito Sans',sans-serif;
     background:var(--paper);
     background-image:
-      radial-gradient(circle at 8% 6%, rgba(217,151,30,.13) 0%, transparent 38%),
-      radial-gradient(circle at 96% 88%, rgba(193,84,107,.12) 0%, transparent 42%);
+      radial-gradient(circle at 8% 6%, rgba(113,169,67,.13) 0%, transparent 38%),
+      radial-gradient(circle at 96% 88%, rgba(23,143,175,.12) 0%, transparent 42%);
     background-attachment:fixed;
     color:var(--text);
     min-height:100vh;
@@ -54,16 +54,9 @@
     color:var(--ink);
   }
   .brand-mark{
-    width:26px;height:26px;
+    height:30px;
+    width:auto;
     flex:none;
-    border-radius:9px;
-    background:linear-gradient(135deg, var(--gold), var(--berry));
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    font-size:13px;
-    transform:rotate(-4deg);
   }
   .strikes{display:flex;gap:7px;align-items:center;}
   .strike-dot{
@@ -80,7 +73,7 @@
     border:1px solid var(--line);
     border-radius:20px;
     padding:42px 38px;
-    box-shadow:0 12px 30px -14px rgba(74,50,38,.18);
+    box-shadow:0 12px 30px -14px rgba(31,58,56,.18);
     overflow:hidden;
   }
   .card::before{
@@ -89,7 +82,7 @@
     top:-60px;right:-60px;
     width:170px;height:170px;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(217,151,30,.16) 0%, transparent 70%);
+    background:radial-gradient(circle, rgba(113,169,67,.16) 0%, transparent 70%);
     pointer-events:none;
   }
   @media (max-width:480px){.card{padding:30px 22px;}}
@@ -114,13 +107,13 @@
     font-size:12px;
     letter-spacing:.04em;
     text-transform:uppercase;
-    color:var(--gold-dark);
-    background:rgba(217,151,30,.13);
+    color:var(--green-dark);
+    background:rgba(113,169,67,.13);
     padding:6px 13px;
     border-radius:99px;
     margin-bottom:20px;
   }
-  .section-tag.listening{color:var(--berry-dark);background:rgba(193,84,107,.13);}
+  .section-tag.listening{color:var(--teal-dark);background:rgba(23,143,175,.13);}
 
   .rule-list{
     list-style:none;padding:0;margin:0 0 30px;
@@ -130,7 +123,7 @@
     display:flex;gap:11px;font-size:14.5px;line-height:1.55;color:var(--text);
   }
   .rule-list li::before{
-    content:"✦";color:var(--gold);flex:none;font-size:12px;margin-top:2px;
+    content:"✦";color:var(--green);flex:none;font-size:12px;margin-top:2px;
   }
 
   button.primary{
@@ -144,9 +137,9 @@
     border-radius:99px;
     cursor:pointer;
     transition:background .15s ease, transform .1s ease, box-shadow .15s ease;
-    box-shadow:0 6px 16px -6px rgba(74,50,38,.35);
+    box-shadow:0 6px 16px -6px rgba(31,58,56,.35);
   }
-  button.primary:hover{background:#5c4132; box-shadow:0 8px 18px -6px rgba(74,50,38,.42);}
+  button.primary:hover{background:#14302E; box-shadow:0 8px 18px -6px rgba(31,58,56,.42);}
   button.primary:active{transform:translateY(1px);}
   button.primary:disabled{background:#CFC2AF;cursor:not-allowed;box-shadow:none;}
 
@@ -157,8 +150,8 @@
     margin-bottom:10px;
   }
   .passage{
-    background:rgba(217,151,30,.08);
-    border-left:3px solid var(--gold);
+    background:rgba(113,169,67,.08);
+    border-left:3px solid var(--green);
     padding:15px 19px;
     font-size:15.5px;
     line-height:1.6;
@@ -166,8 +159,8 @@
     border-radius:0 12px 12px 0;
   }
   .listen-box{
-    background:rgba(193,84,107,.08);
-    border-left:3px solid var(--berry);
+    background:rgba(23,143,175,.08);
+    border-left:3px solid var(--teal);
     padding:18px;
     margin-bottom:20px;
     border-radius:0 12px 12px 0;
@@ -180,15 +173,15 @@
     width:48px;height:48px;
     border-radius:50%;
     border:none;
-    background:var(--berry);
+    background:var(--teal);
     color:#fff;
     font-size:18px;
     cursor:pointer;
     display:flex;align-items:center;justify-content:center;
     transition:background .15s ease, transform .1s ease;
-    box-shadow:0 6px 14px -6px rgba(193,84,107,.55);
+    box-shadow:0 6px 14px -6px rgba(23,143,175,.55);
   }
-  .play-btn:hover{background:var(--berry-dark); transform:scale(1.04);}
+  .play-btn:hover{background:var(--teal-dark); transform:scale(1.04);}
   .play-btn.playing{background:var(--sage);}
   .listen-copy{font-size:13.5px;color:var(--text-soft);line-height:1.5;}
   .listen-copy b{color:var(--text);}
@@ -228,8 +221,8 @@
     transition:border-color .12s ease, background .12s ease, transform .1s ease;
     background:#fff;
   }
-  .option:hover{border-color:var(--gold); transform:translateX(2px);}
-  .option.selected{border-color:var(--ink);background:rgba(74,50,38,.05);}
+  .option:hover{border-color:var(--green); transform:translateX(2px);}
+  .option.selected{border-color:var(--ink);background:rgba(31,58,56,.05);}
   .option .letter{
     font-family:'Nunito Sans',sans-serif;
     font-size:12px;
@@ -249,7 +242,7 @@
     height:5px;background:var(--line);
     border-radius:99px;margin-bottom:28px;overflow:hidden;
   }
-  .progress-fill{height:100%;background:linear-gradient(90deg, var(--gold), var(--berry));transition:width .3s ease;border-radius:99px;}
+  .progress-fill{height:100%;background:linear-gradient(90deg, var(--green), var(--teal));transition:width .3s ease;border-radius:99px;}
 
   /* results */
   .level-name{
@@ -263,10 +256,16 @@
     font-family:'Nunito Sans',sans-serif;
     font-weight:800;
     font-size:12.5px;
-    color:var(--gold-dark);
+    color:var(--green-dark);
     letter-spacing:.06em;
     text-transform:uppercase;
     margin-bottom:16px;
+  }
+  .result-icon{
+    width:104px;
+    height:80px;
+    display:block;
+    margin:6px 0 14px;
   }
   .level-desc{font-size:15px;line-height:1.65;color:var(--text-soft);margin-bottom:28px;}
 
@@ -281,13 +280,13 @@
   }
   .gauge-bands{position:absolute;inset:0;display:flex;border-radius:99px;overflow:hidden;}
   .gauge-bands span{flex:1;border-right:2px solid #fff;}
-  .band-0{background:#F3DFAE;}
-  .band-1{background:#EFD59B;}
-  .band-2{background:#E6CB84;}
-  .band-3{background:#D3CC8A;}
-  .band-4{background:#BFCB8E;}
-  .band-5{background:#A8C48F;}
-  .band-6{background:#8FB885;}
+  .band-0{background:#E4EEDC;}
+  .band-1{background:#CDE2BB;}
+  .band-2{background:#AFD394;}
+  .band-3{background:#8FC26E;}
+  .band-4{background:#71A943;}
+  .band-5{background:#4E9A88;}
+  .band-6{background:#178FAF;}
   .gauge-marker{
     position:absolute;
     top:-6px;
@@ -341,7 +340,7 @@
 <body>
 <div class="app">
   <div class="topbar">
-    <span class="brand"><span class="brand-mark">CC</span>Confidence and Connections — Placement Test</span>
+    <span class="brand"><img class="brand-mark" src="intercambio-logo.png" alt="Intercambio">Confidence and Connections — Placement Test</span>
     <div id="topRight"></div>
   </div>
   <div id="root"></div>
@@ -551,6 +550,24 @@ function renderResults(){
   root.innerHTML = `
   <div class="card fade-in">
     <span class="section-tag">Results</span>
+    <svg class="result-icon" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="65" cy="90" rx="48" ry="6" fill="#1F3A38" opacity="0.08"/>
+      <g transform="rotate(-4 65 60)">
+        <rect x="16" y="66" width="98" height="16" rx="4" fill="#71A943"/>
+        <rect x="16" y="66" width="98" height="5" rx="2.5" fill="#567F32"/>
+      </g>
+      <g transform="rotate(3 65 48)">
+        <rect x="24" y="46" width="82" height="16" rx="4" fill="#178FAF"/>
+        <rect x="24" y="46" width="82" height="5" rx="2.5" fill="#106C85"/>
+      </g>
+      <g transform="rotate(-2 65 30)">
+        <rect x="30" y="26" width="70" height="16" rx="4" fill="#4E9A88"/>
+        <line x1="65" y1="26" x2="65" y2="42" stroke="#37725F" stroke-width="1.4"/>
+      </g>
+      <g transform="translate(78 8) rotate(18)">
+        <path d="M0 14 C0 4, 10 -2, 18 2 C20 -4, 30 -2, 30 8 C30 16, 20 20, 15 24 C10 20, 0 20, 0 14Z" fill="#71A943" opacity="0.9"/>
+      </g>
+    </svg>
     <div class="level-code">${lvl.code} · Suggested placement</div>
     <div class="level-name">${lvl.name}</div>
     <p class="level-desc">${lvl.desc}</p>
