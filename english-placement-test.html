@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Confidence and Connections — Placement Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF1E3;
+    --card:#FFFDF8;
+    --ink:#4A3226;
+    --text:#3E2F26;
+    --text-soft:#8C7B6C;
+    --line:#EADFCB;
+    --gold:#D9971E;
+    --gold-dark:#B87A16;
+    --berry:#C1546B;
+    --berry-dark:#A03E53;
+    --sage:#748C5B;
+    --brick:#B5493F;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Nunito Sans',sans-serif;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 8% 6%, rgba(217,151,30,.13) 0%, transparent 38%),
+      radial-gradient(circle at 96% 88%, rgba(193,84,107,.12) 0%, transparent 42%);
+    background-attachment:fixed;
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:36px 16px 60px;
+  }
+  .app{width:100%;max-width:640px;}
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+    padding:0 4px;
+  }
+  .topbar .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--ink);
+  }
+  .brand-mark{
+    width:26px;height:26px;
+    flex:none;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--gold), var(--berry));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:13px;
+    transform:rotate(-4deg);
+  }
+  .strikes{display:flex;gap:7px;align-items:center;}
+  .strike-dot{
+    width:10px;height:10px;border-radius:50%;
+    border:1.6px solid #D8C9AE;
+    background:transparent;
+    transition:all .25s ease;
+  }
+  .strike-dot.filled{background:var(--brick);border-color:var(--brick);}
+
+  .card{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:42px 38px;
+    box-shadow:0 12px 30px -14px rgba(74,50,38,.18);
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-60px;right:-60px;
+    width:170px;height:170px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(217,151,30,.16) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  @media (max-width:480px){.card{padding:30px 22px;}}
+
+  h1.hero{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:33px;
+    line-height:1.22;
+    margin:0 0 14px;
+    color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  p.lede{font-size:16px;line-height:1.65;color:var(--text-soft);margin:0 0 26px;}
+
+  .section-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-family:'Nunito Sans',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    background:rgba(217,151,30,.13);
+    padding:6px 13px;
+    border-radius:99px;
+    margin-bottom:20px;
+  }
+  .section-tag.listening{color:var(--berry-dark);background:rgba(193,84,107,.13);}
+
+  .rule-list{
+    list-style:none;padding:0;margin:0 0 30px;
+    display:grid;gap:12px;
+  }
+  .rule-list li{
+    display:flex;gap:11px;font-size:14.5px;line-height:1.55;color:var(--text);
+  }
+  .rule-list li::before{
+    content:"✦";color:var(--gold);flex:none;font-size:12px;margin-top:2px;
+  }
+
+  button.primary{
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    font-family:'Nunito Sans',sans-serif;
+    font-weight:700;
+    font-size:15.5px;
+    padding:14px 28px;
+    border-radius:99px;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease, box-shadow .15s ease;
+    box-shadow:0 6px 16px -6px rgba(74,50,38,.35);
+  }
+  button.primary:hover{background:#5c4132; box-shadow:0 8px 18px -6px rgba(74,50,38,.42);}
+  button.primary:active{transform:translateY(1px);}
+  button.primary:disabled{background:#CFC2AF;cursor:not-allowed;box-shadow:none;}
+
+  .qmeta{
+    font-family:'Nunito Sans',sans-serif;
+    font-size:12px;
+    color:var(--text-soft);
+    margin-bottom:10px;
+  }
+  .passage{
+    background:rgba(217,151,30,.08);
+    border-left:3px solid var(--gold);
+    padding:15px 19px;
+    font-size:15.5px;
+    line-height:1.6;
+    margin-bottom:20px;
+    border-radius:0 12px 12px 0;
+  }
+  .listen-box{
+    background:rgba(193,84,107,.08);
+    border-left:3px solid var(--berry);
+    padding:18px;
+    margin-bottom:20px;
+    border-radius:0 12px 12px 0;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .play-btn{
+    flex:none;
+    width:48px;height:48px;
+    border-radius:50%;
+    border:none;
+    background:var(--berry);
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease, transform .1s ease;
+    box-shadow:0 6px 14px -6px rgba(193,84,107,.55);
+  }
+  .play-btn:hover{background:var(--berry-dark); transform:scale(1.04);}
+  .play-btn.playing{background:var(--sage);}
+  .listen-copy{font-size:13.5px;color:var(--text-soft);line-height:1.5;}
+  .listen-copy b{color:var(--text);}
+  .audio-note{
+    font-size:12px;
+    color:var(--brick);
+    line-height:1.5;
+    margin:-10px 0 20px;
+  }
+  .audio-note code{
+    background:rgba(181,73,63,.1);
+    padding:1px 5px;
+    border-radius:4px;
+    font-family:monospace;
+    font-size:11.5px;
+  }
+
+  .question{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    font-weight:600;
+    line-height:1.42;
+    margin:0 0 20px;
+    color:var(--ink);
+  }
+  .options{display:grid;gap:11px;margin-bottom:28px;}
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:13px;
+    border:1.6px solid var(--line);
+    border-radius:14px;
+    padding:14px 17px;
+    cursor:pointer;
+    font-size:15px;
+    line-height:1.4;
+    transition:border-color .12s ease, background .12s ease, transform .1s ease;
+    background:#fff;
+  }
+  .option:hover{border-color:var(--gold); transform:translateX(2px);}
+  .option.selected{border-color:var(--ink);background:rgba(74,50,38,.05);}
+  .option .letter{
+    font-family:'Nunito Sans',sans-serif;
+    font-size:12px;
+    font-weight:800;
+    color:var(--text-soft);
+    border:1.4px solid var(--line);
+    border-radius:50%;
+    width:23px;height:23px;
+    flex:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .option.selected .letter{border-color:var(--ink);color:var(--ink);background:#fff;}
+
+  .nav-row{display:flex;justify-content:flex-end;}
+
+  .progress-rail{
+    height:5px;background:var(--line);
+    border-radius:99px;margin-bottom:28px;overflow:hidden;
+  }
+  .progress-fill{height:100%;background:linear-gradient(90deg, var(--gold), var(--berry));transition:width .3s ease;border-radius:99px;}
+
+  /* results */
+  .level-name{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    font-weight:700;
+    color:var(--ink);
+    margin:2px 0 6px;
+  }
+  .level-code{
+    font-family:'Nunito Sans',sans-serif;
+    font-weight:800;
+    font-size:12.5px;
+    color:var(--gold-dark);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .level-desc{font-size:15px;line-height:1.65;color:var(--text-soft);margin-bottom:28px;}
+
+  .gauge{margin-bottom:30px;}
+  .gauge-track{
+    position:relative;
+    height:12px;
+    border-radius:99px;
+    background:var(--line);
+    overflow:visible;
+    margin-bottom:10px;
+  }
+  .gauge-bands{position:absolute;inset:0;display:flex;border-radius:99px;overflow:hidden;}
+  .gauge-bands span{flex:1;border-right:2px solid #fff;}
+  .band-0{background:#EFC9C0;}
+  .band-1{background:#F0D9A8;}
+  .band-2{background:#E7DCA0;}
+  .band-3{background:#CFDCA6;}
+  .band-4{background:#A9C79A;}
+  .gauge-marker{
+    position:absolute;
+    top:-6px;
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--ink);
+    border:3px solid #fff;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+    transform:translateX(-50%);
+    transition:left .5s ease;
+  }
+  .gauge-labels{
+    display:flex;justify-content:space-between;
+    font-family:'Nunito Sans',sans-serif;
+    font-weight:700;
+    font-size:10.5px;
+    color:var(--text-soft);
+    letter-spacing:.03em;
+  }
+
+  .score-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .score-box{
+    border:1.6px solid var(--line);
+    border-radius:14px;
+    padding:17px 19px;
+    background:#fff;
+  }
+  .score-box .label{
+    font-family:'Nunito Sans',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--text-soft);
+    margin-bottom:6px;
+  }
+  .score-box .val{font-family:'Fraunces',serif;font-size:25px;font-weight:700;color:var(--ink);}
+  .score-box .val small{font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text-soft);}
+
+  .footnote{font-size:12.5px;color:var(--text-soft);line-height:1.6;}
+
+  .fade-in{animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <span class="brand"><span class="brand-mark">CC</span>Confidence and Connections — Placement Test</span>
+    <div id="topRight"></div>
+  </div>
+  <div id="root"></div>
+</div>
+
+<script>
+
+/* ---------------- CONTENT ---------------- */
+const readingQuestions = [
+  {level:"A1", question:"My ___________ is 195 Pine Street.", options:["address","house","direction","live"], answer:0},
+  {level:"A1", question:"Today is Tuesday. Tomorrow is ___________.", options:["Monday","July","Wednesday","Friday"], answer:2},
+  {level:"A1", question:"Her first name is Lucy. What's ___________ last name?", options:["she","their","his","her"], answer:3},
+  {level:"A1", question:"I work at a restaurant. I am a ______________.", options:["teacher","cook","nurse","nanny"], answer:1},
+  {level:"A1", question:"I'm wearing ___________.", options:["shoes blue","blue shoe","blue shoes","a blue shoes"], answer:2},
+  {level:"A2", question:"This weekend, I'm going _________ a movie.", options:["to watch","seeing","watch","watching"], answer:0},
+  {level:"A2", question:"When _____ the store open?", options:["do","does","are","to be"], answer:1},
+  {level:"A2", question:"Can you ___________ weekends?", options:["work","works","to work","working"], answer:0},
+  {level:"A2", question:"It's summer. The weather is ___________.", options:["cold","hot","snowy","sun"], answer:1},
+  {level:"A2", question:"Did you pay the bill?", options:["Yes, I pay it.","No, I didn't pay them.","No, you didn't pay it.","Yes, I paid it."], answer:3},
+  {level:"B1", question:"How much ___________ the rent?", options:["Is","does","are","be"], answer:0},
+  {level:"B1", question:"When ___________?", options:["did they get married","they get married","they got married","do they got"], answer:0},
+  {level:"B1", question:"Yesterday my brother ___________ a new car.", options:["buy","buyed","buys","bought"], answer:3},
+  {level:"B1", question:"I ___________ going to Denver tomorrow.", options:["will","am","are","be"], answer:1},
+  {level:"B1", question:"Next week, they ___________ begin their English course.", options:["are","do","are going to","will to"], answer:2},
+  {level:"B1", question:"My little sister is ___________ than me.", options:["more young","younger","young","youngest"], answer:1},
+  {level:"B1", question:"Is this hammer ________?", options:["my","me","I","mine"], answer:3},
+  {level:"B2", question:"What will you do if she _____________ late?", options:["arrives","arrived","will arrive","arrive"], answer:0},
+  {level:"B2", question:"Sorry I'm late. My car ___________.", options:["break into","broke down","broke into","breaks out"], answer:1},
+  {level:"B2", question:"I'd like something ___________ my headache.", options:["of","to","for","in"], answer:2},
+  {level:"B2", question:"Did you get ___________ in the mail?", options:["nothing","anyone","nobody","anything"], answer:3},
+  {level:"B2", question:"That movie is very ______________. I loved it.", options:["boring","excited","exciting","bored"], answer:2},
+  {level:"B2", question:"Oops! I brought my keys ___________ I forgot my wallet.", options:[". And",", or",", so",", but"], answer:3},
+  {level:"B2", question:"Have they ever ___________ their house?", options:["paint","painting","paints","painted"], answer:3},
+  {level:"C1", question:"Lola got a ticket. She ___________ and driving.", options:["be texting","texts","was texting","were texting"], answer:2},
+  {level:"C1", question:"If you won a million dollars, ___________?", options:["what would you do","what will you do","what do you do","what did you do"], answer:0},
+  {level:"C1", question:"It's hard _________________ to a new country.", options:["move","to move","moved","to moving"], answer:1},
+  {level:"C1", question:"She has worked at the bank___________6 years.", options:["yet","since","for","until"], answer:2},
+  {level:"C1", question:"You play tennis very well. You ____ practice a lot.", options:["might","must","can","are"], answer:1},
+  {level:"C1", question:"Are you ___________ at the supermarket? You've been there for two hours!", options:["yet","anymore","still","stay"], answer:2},
+  {level:"C1", question:"I ________ swimming for 2 years.", options:["have been","has been","been","have"], answer:0},
+  {level:"C1", question:"She _______ a noise while she was doing her homework.", options:["hearing","heard","hear","hears"], answer:1},
+  {level:"C1", question:"He's going to invest in the retirement plan ___________ he wants to save money.", options:["unless","to","even though","because"], answer:3}
+];
+
+// AUDIO FILES: the spoken prompt for each item is the audio itself (there is
+// no written question stem) — students hear the prompt, then pick the
+// response that fits. Files use your original names (Question_01.m4a, etc.)
+// and must live in an "audio" folder next to this HTML file.
+const listeningQuestions = [
+  {audioFile:"audio/Question_01.mp3", question:"Listen, then choose the best response.", options:["Yes, it does.","No, she isn't","No, it isn't."], answer:2},
+  {audioFile:"audio/Question_02.mp3", question:"Listen, then choose the best response.", options:["I don't.","Yes, I can.","They dance."], answer:1},
+  {audioFile:"audio/Question_03.mp3", question:"Listen, then choose the best response.", options:["Leo has pants brown and a sweater green.","Leo has brown pants and a green sweater.","It is green."], answer:1},
+  {audioFile:"audio/Question_04.mp3", question:"Listen, then choose the best response.", options:["No, it isn't.","It will be cold tomorrow.","It is sunny, but windy."], answer:2},
+  {audioFile:"audio/Question_05.mp3", question:"Listen, then choose the best response.", options:["Yes, I am.","No, I don't.","Yes, you are."], answer:0},
+  {audioFile:"audio/Question_06.mp3", question:"Listen, then choose the best response.", options:["At 6 p.m.","Yes, they do.","At a restaurant."], answer:0},
+  {audioFile:"audio/Question_07.mp3", question:"Listen, then choose the best response.", options:["When I was a child.","I grew up in South America.","I grow up at Mexico."], answer:1},
+  {audioFile:"audio/Question_08.mp3", question:"Listen, then choose the best response.", options:["She sleeps.","I am sleeping.","She is sleeping."], answer:2},
+  {audioFile:"audio/Question_09.mp3", question:"Listen, then choose the best response.", options:["He was swimming.","He swims.","He swam."], answer:0},
+  {audioFile:"audio/Question_10.mp3", question:"Listen, then choose the best response.", options:["No, I won't.","I go to the BBQ.","I'll cancel the BBQ."], answer:2},
+  {audioFile:"audio/Question_11.mp3", question:"Listen, then choose the best response.", options:["I play tennis.","I used to play tennis.","I'm going to play."], answer:1},
+  {audioFile:"audio/Question_12.mp3", question:"Listen, then choose the best response.", options:["It's hers.","It's her.","They're hers."], answer:2},
+  {audioFile:"audio/Question_13.mp3", question:"Listen, then choose the best response.", options:["To work nights makes him tired.","Working nights makes him tired.","Yes, he's tired."], answer:1},
+  {audioFile:"audio/Question_14.mp3", question:"Listen, then choose the best response.", options:["Sure, I can do that.","Sorry, I don't.","Yes, I pick up your mail."], answer:0},
+  {audioFile:"audio/Question_15.mp3", question:"Listen, then choose the best response.", options:["She has had it since 2 hours.","She has it for 2 hours.","She has had it for 2 hours."], answer:2},
+  {audioFile:"audio/Question_16.mp3", question:"Listen, then choose the best response.", options:["No, I've never gone camping.","No, I never go camping.","No, I ever go."], answer:0},
+  {audioFile:"audio/Question_17.mp3", question:"Listen, then choose the best response.", options:["I've been studying since August.","I've studied for August.","Yes, I have."], answer:0},
+  {audioFile:"audio/Question_18.mp3", question:"Listen, then choose the best response.", options:["No, I'm not working there yet.","Yes, I'm still working there.","I'm working there anymore."], answer:1},
+  {audioFile:"audio/Question_19.mp3", question:"Listen, then choose the best response.", options:["I'm living in California.","I'd live in California.","I'll live in California."], answer:1},
+  {audioFile:"audio/Question_20.mp3", question:"Listen, then choose the best response.", options:["Yes, I did.","Yes, I am.","Yes, she did."], answer:0}
+];
+
+const READING_POINTS = 1;
+const LISTENING_POINTS = 2;
+const MAX_POSSIBLE = readingQuestions.length*READING_POINTS + listeningQuestions.length*LISTENING_POINTS; // 33 + 40 = 73
+
+const LEVELS = [
+  {name:"Beginner", code:"A1", min:0,  max:14, desc:"Just starting out with English. The program will focus on everyday words, simple sentences, and basic conversation skills."},
+  {name:"Elementary", code:"A2", min:15, max:29, desc:"Can handle simple, familiar topics. Ready to build core grammar, everyday vocabulary, and confidence speaking."},
+  {name:"Intermediate", code:"B1", min:30, max:44, desc:"Comfortable with everyday English. Ready to develop fluency and handle more complex, real-world topics."},
+  {name:"Upper Intermediate", code:"B2", min:45, max:59, desc:"Communicates confidently on a wide range of topics. Ready to refine nuance, accuracy, and professional English."},
+  {name:"Advanced", code:"C1", min:60, max:73, desc:"Strong command of English. Ready for specialized, professional-level coursework and native-paced material."}
+];
+
+/* ---------------- STATE ---------------- */
+let state = {
+  screen:"intro", // intro | reading | listeningIntro | listening | results
+  rIndex:0, rWrong:0, rScore:0, rAnswered:0,
+  lIndex:0, lWrong:0, lScore:0, lAnswered:0,
+  selected:null,
+  locked:false,
+  hasPlayed:false
+};
+
+function levelFor(score){
+  for(const l of LEVELS){ if(score>=l.min && score<=l.max) return l; }
+  return LEVELS[LEVELS.length-1];
+}
+
+/* ---------------- RENDER HELPERS ---------------- */
+const root = document.getElementById('root');
+const topRight = document.getElementById('topRight');
+
+function renderStrikes(wrong, cls){
+  let html = '<div class="strikes">';
+  for(let i=0;i<3;i++){
+    html += `<div class="strike-dot ${i<wrong?'filled':''}"></div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function letters(i){ return ['A','B','C','D'][i]; }
+
+/* ---------------- SCREENS ---------------- */
+function renderIntro(){
+  topRight.innerHTML = '';
+  root.innerHTML = `
+  <div class="card fade-in">
+    <span class="section-tag">Placement Test</span>
+    <h1 class="hero">Let's find your starting level.</h1>
+    <p class="lede">This test has two parts — Reading and Listening. It adapts as you go: questions get harder, and each section ends as soon as we have a clear read on your level.</p>
+    <ul class="rule-list">
+      <li>Reading questions are worth 1 point each.</li>
+      <li>Listening questions are worth 2 points each — you'll press play to hear each one.</li>
+      <li>A section ends after 3 incorrect answers, and moves you straight to the next part.</li>
+      <li>There's no going back once you submit an answer, so take your time.</li>
+      <li>Takes about 10–15 minutes. Find a quiet spot for the listening section.</li>
+    </ul>
+    <button class="primary" onclick="startReading()">Start test</button>
+  </div>`;
+}
+
+function renderSectionIntro(kind){
+  topRight.innerHTML = '';
+  const isListening = kind==="listening";
+  root.innerHTML = `
+  <div class="card fade-in">
+    <span class="section-tag ${isListening?'listening':''}">${isListening?'Part 2 · Listening':'Part 1 · Reading'}</span>
+    <h1 class="hero">${isListening?'Now for listening.':'Reading section'}</h1>
+    <p class="lede">${isListening
+      ? "You'll hear a short recording for each question — press the play button, then choose the best answer. Each correct answer is worth 2 points. Three incorrect answers ends the test."
+      : "Read each short passage or sentence, then choose the best answer. Each correct answer is worth 1 point. Three incorrect answers moves you on to the listening section."}</p>
+    <button class="primary" onclick="${isListening?'startListening()':'goToQuestion()'}">${isListening?'Start listening section':'Begin'}</button>
+  </div>`;
+}
+
+function renderQuestion(){
+  const isListening = state.screen==="listening";
+  const bank = isListening ? listeningQuestions : readingQuestions;
+  const idx = isListening ? state.lIndex : state.rIndex;
+  const wrong = isListening ? state.lWrong : state.rWrong;
+  const q = bank[idx];
+  const points = isListening ? LISTENING_POINTS : READING_POINTS;
+
+  topRight.innerHTML = renderStrikes(wrong);
+
+  const progressPct = Math.round((idx/bank.length)*100);
+
+  let mediaHtml = '';
+  if(isListening){
+    mediaHtml = `
+      <div class="listen-box">
+        <button class="play-btn" id="playBtn" onclick="playAudio()">▶</button>
+        <div class="listen-copy"><b>Press play</b> to hear the recording. You can replay it if you need to.</div>
+      </div>
+      <div class="audio-note" id="audioNote"></div>`;
+  } else if(q.passage){
+    mediaHtml = `<div class="passage">${q.passage}</div>`;
+  }
+
+  const optionsHtml = q.options.map((opt,i)=>`
+    <div class="option ${state.selected===i?'selected':''}" onclick="selectOption(${i})">
+      <span class="letter">${letters(i)}</span>
+      <span>${opt}</span>
+    </div>`).join('');
+
+  root.innerHTML = `
+  <div class="card fade-in">
+    <span class="section-tag ${isListening?'listening':''}">${isListening?'Listening':'Reading'} · Q${idx+1} · ${points} pt${points>1?'s':''}</span>
+    <div class="progress-rail"><div class="progress-fill" style="width:${progressPct}%"></div></div>
+    ${mediaHtml}
+    <div class="question">${q.question}</div>
+    <div class="options">${optionsHtml}</div>
+    <div class="nav-row">
+      <button class="primary" id="nextBtn" ${state.selected===null?'disabled':''} onclick="submitAnswer()">
+        ${state.locked ? 'Next' : 'Submit answer'}
+      </button>
+    </div>
+  </div>`;
+
+  if(isListening){ state.hasPlayed=false; }
+}
+
+function renderResults(){
+  topRight.innerHTML = '';
+  const total = state.rScore + state.lScore;
+  const lvl = levelFor(total);
+  const pct = Math.min(100, Math.round((total/MAX_POSSIBLE)*100));
+  const rMax = state.rAnswered; // max possible from questions actually attempted (1pt each)
+  const lMax = state.lAnswered*2;
+
+  root.innerHTML = `
+  <div class="card fade-in">
+    <span class="section-tag">Results</span>
+    <div class="level-code">${lvl.code} · Suggested placement</div>
+    <div class="level-name">${lvl.name}</div>
+    <p class="level-desc">${lvl.desc}</p>
+
+    <div class="gauge">
+      <div class="gauge-track">
+        <div class="gauge-bands">
+          <span class="band-0"></span><span class="band-1"></span><span class="band-2"></span><span class="band-3"></span><span class="band-4"></span>
+        </div>
+        <div class="gauge-marker" style="left:${pct}%"></div>
+      </div>
+      <div class="gauge-labels">
+        <span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span>
+      </div>
+    </div>
+
+    <div class="score-grid">
+      <div class="score-box">
+        <div class="label">Reading</div>
+        <div class="val">${state.rScore} <small>/ ${rMax} pts</small></div>
+      </div>
+      <div class="score-box">
+        <div class="label">Listening</div>
+        <div class="val">${state.lScore} <small>/ ${lMax} pts</small></div>
+      </div>
+      <div class="score-box">
+        <div class="label">Combined score</div>
+        <div class="val">${total} <small>/ ${MAX_POSSIBLE} pts</small></div>
+      </div>
+      <div class="score-box">
+        <div class="label">Questions answered</div>
+        <div class="val">${state.rAnswered + state.lAnswered} <small>total</small></div>
+      </div>
+    </div>
+
+    <p class="footnote">Placement is based on a combined-score cut-off across both sections. A program advisor will confirm this level before your first class.</p>
+  </div>`;
+}
+
+/* ---------------- FLOW LOGIC ---------------- */
+function startReading(){
+  state.screen="readingIntro";
+  renderSectionIntro("reading");
+}
+function goToQuestion(){
+  state.screen="reading";
+  state.selected=null; state.locked=false;
+  renderQuestion();
+}
+function startListening(){
+  state.screen="listening";
+  state.selected=null; state.locked=false;
+  renderQuestion();
+}
+
+function selectOption(i){
+  if(state.locked) return;
+  state.selected = i;
+  renderQuestion();
+}
+
+function submitAnswer(){
+  if(state.selected===null) return;
+
+  if(!state.locked){
+    // grade it
+    const isListening = state.screen==="listening";
+    const bank = isListening ? listeningQuestions : readingQuestions;
+    const idx = isListening ? state.lIndex : state.rIndex;
+    const q = bank[idx];
+    const correct = state.selected === q.answer;
+
+    if(isListening){
+      state.lAnswered++;
+      if(correct){ state.lScore += LISTENING_POINTS; } else { state.lWrong++; }
+    } else {
+      state.rAnswered++;
+      if(correct){ state.rScore += READING_POINTS; } else { state.rWrong++; }
+    }
+    state.locked = true;
+    markOption(correct, q.answer);
+    return;
+  }
+
+  // advance
+  advance();
+}
+
+function markOption(correct, answerIdx){
+  const opts = document.querySelectorAll('.option');
+  opts.forEach((el,i)=>{
+    el.style.pointerEvents='none';
+    if(i===answerIdx){ el.style.borderColor='#2E7D6B'; el.style.background='rgba(46,125,107,.08)'; }
+    else if(i===state.selected && !correct){ el.style.borderColor='#B5493F'; el.style.background='rgba(181,73,63,.07)'; }
+  });
+  document.getElementById('nextBtn').innerText='Next';
+}
+
+function advance(){
+  state.selected=null; state.locked=false;
+
+  if(state.screen==="reading"){
+    if(state.rWrong>=3 || state.rIndex+1>=readingQuestions.length){
+      state.screen="listeningIntro";
+      renderSectionIntro("listening");
+      return;
+    }
+    state.rIndex++;
+    renderQuestion();
+  } else if(state.screen==="listening"){
+    if(state.lWrong>=3 || state.lIndex+1>=listeningQuestions.length){
+      state.screen="results";
+      renderResults();
+      return;
+    }
+    state.lIndex++;
+    renderQuestion();
+  }
+}
+
+/* ---------------- AUDIO ----------------
+   Each question's audioFile points at your uploaded recording. If a file
+   fails to load, a message appears under the question instead of silently
+   doing nothing, so a broken file is easy to spot during setup or testing. */
+if(!window.__audioEl){ window.__audioEl = new Audio(); }
+
+function playAudio(){
+  const q = listeningQuestions[state.lIndex];
+  const btn = document.getElementById('playBtn');
+  const noteEl = document.getElementById('audioNote');
+  if(noteEl) noteEl.innerHTML = '';
+
+  const audioEl = window.__audioEl;
+  audioEl.pause();
+  audioEl.onplay = null; audioEl.onended = null; audioEl.onerror = null;
+
+  audioEl.src = q.audioFile;
+  audioEl.onplay = ()=>{ btn.classList.add('playing'); btn.innerText='●'; };
+  audioEl.onended = ()=>{ btn.classList.remove('playing'); btn.innerText='▶'; };
+  audioEl.onerror = ()=>{
+    btn.classList.remove('playing'); btn.innerText='▶';
+    if(noteEl) noteEl.innerHTML = `Couldn't load <code>${q.audioFile}</code>. Check the file exists and is named correctly.`;
+  };
+
+  const playPromise = audioEl.play();
+  if(playPromise && playPromise.catch){ playPromise.catch(()=>{ audioEl.onerror(); }); }
+  state.hasPlayed = true;
+}
+
+/* ---------------- INIT ---------------- */
+renderIntro();
+
+</script>
+</body>
+</html>
