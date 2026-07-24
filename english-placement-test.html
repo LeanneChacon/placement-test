@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Confidence and Connections — Placement Test</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Nunito+Sans:wght@400;500;600;700;800&family=Noto+Sans:wght@400;600;700;800&family=Noto+Serif:wght@600;700&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F7FAF7;
@@ -23,7 +23,7 @@
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     background:var(--paper);
     background-image:
       radial-gradient(circle at 8% 6%, rgba(113,169,67,.13) 0%, transparent 38%),
@@ -48,7 +48,7 @@
     display:flex;
     align-items:center;
     gap:10px;
-    font-family:'Fraunces',serif;
+    font-family:'Fraunces','Noto Serif','Noto Sans Arabic','Noto Sans SC','Noto Sans',serif;
     font-weight:600;
     font-size:16px;
     color:var(--ink);
@@ -59,6 +59,19 @@
     flex:none;
   }
   .strikes{display:flex;gap:7px;align-items:center;}
+  .topbar-right{display:flex;align-items:center;gap:12px;}
+  .lang-select{
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    color:var(--ink);
+    background:#fff;
+    border:1.4px solid var(--line);
+    border-radius:99px;
+    padding:6px 12px;
+    cursor:pointer;
+    appearance:auto;
+  }
   .strike-dot{
     width:10px;height:10px;border-radius:50%;
     border:1.6px solid #D8C9AE;
@@ -88,7 +101,7 @@
   @media (max-width:480px){.card{padding:30px 22px;}}
 
   h1.hero{
-    font-family:'Fraunces',serif;
+    font-family:'Fraunces','Noto Serif','Noto Sans Arabic','Noto Sans SC','Noto Sans',serif;
     font-weight:600;
     font-size:33px;
     line-height:1.22;
@@ -102,7 +115,7 @@
     display:inline-flex;
     align-items:center;
     gap:7px;
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-weight:700;
     font-size:12px;
     letter-spacing:.04em;
@@ -130,7 +143,7 @@
     background:var(--ink);
     color:#fff;
     border:none;
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-weight:700;
     font-size:15.5px;
     padding:14px 28px;
@@ -144,7 +157,7 @@
   button.primary:disabled{background:#CFC2AF;cursor:not-allowed;box-shadow:none;}
 
   .qmeta{
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-size:12px;
     color:var(--text-soft);
     margin-bottom:10px;
@@ -200,7 +213,7 @@
   }
 
   .question{
-    font-family:'Fraunces',serif;
+    font-family:'Fraunces','Noto Serif','Noto Sans Arabic','Noto Sans SC','Noto Sans',serif;
     font-size:20px;
     font-weight:600;
     line-height:1.42;
@@ -224,7 +237,7 @@
   .option:hover{border-color:var(--green); transform:translateX(2px);}
   .option.selected{border-color:var(--ink);background:rgba(31,58,56,.05);}
   .option .letter{
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-size:12px;
     font-weight:800;
     color:var(--text-soft);
@@ -246,14 +259,14 @@
 
   /* results */
   .level-name{
-    font-family:'Fraunces',serif;
+    font-family:'Fraunces','Noto Serif','Noto Sans Arabic','Noto Sans SC','Noto Sans',serif;
     font-size:32px;
     font-weight:700;
     color:var(--ink);
     margin:2px 0 6px;
   }
   .level-code{
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-weight:800;
     font-size:12.5px;
     color:var(--green-dark);
@@ -300,7 +313,7 @@
   }
   .gauge-labels{
     display:flex;justify-content:space-between;
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-weight:700;
     font-size:10.5px;
     color:var(--text-soft);
@@ -320,7 +333,7 @@
     background:#fff;
   }
   .score-box .label{
-    font-family:'Nunito Sans',sans-serif;
+    font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;
     font-weight:700;
     font-size:11px;
     text-transform:uppercase;
@@ -328,20 +341,34 @@
     color:var(--text-soft);
     margin-bottom:6px;
   }
-  .score-box .val{font-family:'Fraunces',serif;font-size:25px;font-weight:700;color:var(--ink);}
-  .score-box .val small{font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text-soft);}
+  .score-box .val{font-family:'Fraunces','Noto Serif','Noto Sans Arabic','Noto Sans SC','Noto Sans',serif;font-size:25px;font-weight:700;color:var(--ink);}
+  .score-box .val small{font-family:'Nunito Sans','Noto Sans Arabic','Noto Sans SC','Noto Sans',sans-serif;font-size:13px;font-weight:600;color:var(--text-soft);}
 
   .footnote{font-size:12.5px;color:var(--text-soft);line-height:1.6;}
 
   .fade-in{animation:fadeIn .35s ease;}
   @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+  /* RTL overrides (Arabic) — border accents don't flip automatically with dir="rtl" */
+  html[dir="rtl"] .passage,
+  html[dir="rtl"] .listen-box{
+    border-left:none;
+    border-right:3px solid var(--green);
+    border-radius:12px 0 0 12px;
+  }
+  html[dir="rtl"] .listen-box{ border-right-color:var(--teal); }
+  html[dir="rtl"] .rule-list li::before{ order:1; }
+  html[dir="rtl"] .card::before{ left:-60px; right:auto; }
 </style>
 </head>
 <body>
 <div class="app">
   <div class="topbar">
     <span class="brand"><img class="brand-mark" src="intercambio-logo.png" alt="Intercambio">Confidence and Connections — Placement Test</span>
-    <div id="topRight"></div>
+    <div class="topbar-right">
+      <select class="lang-select" id="langSelect" onchange="setLang(this.value)" aria-label="Language"></select>
+      <div id="topRight"></div>
+    </div>
   </div>
   <div id="root"></div>
 </div>
@@ -417,14 +444,313 @@ const LISTENING_POINTS = 3;
 const MAX_POSSIBLE = readingQuestions.length*READING_POINTS + listeningQuestions.length*LISTENING_POINTS; // 66 + 60 = 126
 
 const LEVELS = [
-  {name:"Intro", code:"INTRO", min:0,  max:4,   desc:"Brand new to English. The program will start with foundational vocabulary, everyday phrases, and simple sentence structure."},
-  {name:"Level 1", code:"L1", min:5,  max:20,  desc:"Beginning to build a foundation. Ready to strengthen core grammar, everyday vocabulary, and simple conversation."},
-  {name:"Level 2", code:"L2", min:21, max:43,  desc:"Growing comfort with everyday English. Ready to expand vocabulary and practice more connected conversation."},
-  {name:"Level 3", code:"L3", min:44, max:62,  desc:"A solid grasp of everyday English. Ready to build fluency and take on more complex, real-world topics."},
-  {name:"Level 4", code:"L4", min:63, max:81,  desc:"Confident, capable English use across a range of situations. Ready to refine accuracy and nuance."},
-  {name:"Level 5", code:"L5", min:82, max:125, desc:"A strong, well-rounded command of English. Ready for advanced coursework and more specialized topics."},
-  {name:"Advanced Conversation Practice", code:"ACP", min:126, max:126, desc:"Highly proficient in English. Ready to focus on fluency, nuance, and natural conversation rather than foundational skills."}
+  {code:"INTRO", min:0,  max:4},
+  {code:"L1", min:5,  max:20},
+  {code:"L2", min:21, max:43},
+  {code:"L3", min:44, max:62},
+  {code:"L4", min:63, max:81},
+  {code:"L5", min:82, max:125},
+  {code:"ACP", min:126, max:126}
 ];
+
+/* ---------------- TRANSLATIONS ----------------
+   Only the interface/instructional text is translated here — the actual
+   reading and listening questions stay in English, since this is an
+   English assessment. To add a language, copy one of these blocks and
+   translate its values; the "levels" object inside each language needs
+   a name + desc for each of the 7 level codes. */
+const translations = {
+  en: {
+    langName:"English", dir:"ltr",
+    placementTestTag:"Placement Test",
+    introHero:"Let's find your starting level.",
+    introLede:"This test has two parts — Reading and Listening. It adapts as you go: questions get harder, and each section ends as soon as we have a clear read on your level.",
+    ruleReading:"Reading questions are worth 2 points each.",
+    ruleListening:"Listening questions are worth 3 points each — you'll press play to hear each one.",
+    ruleStop:"A section ends after 3 incorrect answers, and moves you straight to the next part.",
+    ruleNoBack:"There's no going back once you submit an answer, so take your time.",
+    ruleTime:"Takes about 10–15 minutes. Find a quiet spot for the listening section.",
+    startTest:"Start test",
+    part1Reading:"Part 1 · Reading", part2Listening:"Part 2 · Listening",
+    readingSectionTitle:"Reading section", listeningSectionTitle:"Now for listening.",
+    readingSectionLede:"Read each short passage or sentence, then choose the best answer. Each correct answer is worth 2 points. Three incorrect answers moves you on to the listening section.",
+    listeningSectionLede:"You'll hear a short recording for each question — press the play button, then choose the best answer. Each correct answer is worth 3 points. Three incorrect answers ends the test.",
+    begin:"Begin", startListeningSection:"Start listening section",
+    readingLabel:"Reading", listeningLabel:"Listening",
+    readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
+    pressPlayBold:"Press play", pressPlayRest:"to hear the recording. You can replay it if you need to.",
+    listenPrompt:"Listen, then choose the best response.",
+    submitAnswer:"Submit answer", next:"Next",
+    audioErrorPrefix:"Couldn't load", audioErrorSuffix:"Check the file exists and is named correctly.",
+    results:"Results", suggestedPlacement:"Suggested placement",
+    combinedScore:"Combined score", questionsAnswered:"Questions answered",
+    ptsUnit:"pts", totalUnit:"total",
+    footnote:"Placement is based on a combined-score cut-off across both sections. A program advisor will confirm this level before your first class.",
+    levels:{
+      INTRO:{name:"Intro", desc:"Brand new to English. The program will start with foundational vocabulary, everyday phrases, and simple sentence structure."},
+      L1:{name:"Level 1", desc:"Beginning to build a foundation. Ready to strengthen core grammar, everyday vocabulary, and simple conversation."},
+      L2:{name:"Level 2", desc:"Growing comfort with everyday English. Ready to expand vocabulary and practice more connected conversation."},
+      L3:{name:"Level 3", desc:"A solid grasp of everyday English. Ready to build fluency and take on more complex, real-world topics."},
+      L4:{name:"Level 4", desc:"Confident, capable English use across a range of situations. Ready to refine accuracy and nuance."},
+      L5:{name:"Level 5", desc:"A strong, well-rounded command of English. Ready for advanced coursework and more specialized topics."},
+      ACP:{name:"Advanced Conversation Practice", desc:"Highly proficient in English. Ready to focus on fluency, nuance, and natural conversation rather than foundational skills."}
+    }
+  },
+  es: {
+    langName:"Español", dir:"ltr",
+    placementTestTag:"Prueba de Nivel",
+    introHero:"Encontremos tu nivel inicial.",
+    introLede:"Esta prueba tiene dos partes — Lectura y Comprensión Auditiva. Se adapta a medida que avanzas: las preguntas se vuelven más difíciles, y cada sección termina en cuanto tengamos una idea clara de tu nivel.",
+    ruleReading:"Las preguntas de lectura valen 2 puntos cada una.",
+    ruleListening:"Las preguntas de comprensión auditiva valen 3 puntos cada una — presionarás reproducir para escuchar cada una.",
+    ruleStop:"Una sección termina después de 3 respuestas incorrectas, y pasas directamente a la siguiente parte.",
+    ruleNoBack:"No se puede retroceder una vez que envías una respuesta, así que tómate tu tiempo.",
+    ruleTime:"Toma entre 10 y 15 minutos. Busca un lugar tranquilo para la sección de comprensión auditiva.",
+    startTest:"Comenzar prueba",
+    part1Reading:"Parte 1 · Lectura", part2Listening:"Parte 2 · Comprensión auditiva",
+    readingSectionTitle:"Sección de lectura", listeningSectionTitle:"Ahora, comprensión auditiva.",
+    readingSectionLede:"Lee cada pasaje o frase breve y elige la mejor respuesta. Cada respuesta correcta vale 2 puntos. Tres respuestas incorrectas te llevan a la sección de comprensión auditiva.",
+    listeningSectionLede:"Escucharás una grabación breve para cada pregunta — presiona el botón de reproducir y elige la mejor respuesta. Cada respuesta correcta vale 3 puntos. Tres respuestas incorrectas terminan la prueba.",
+    begin:"Comenzar", startListeningSection:"Comenzar sección de comprensión auditiva",
+    readingLabel:"Lectura", listeningLabel:"Comprensión auditiva",
+    readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
+    pressPlayBold:"Presiona reproducir", pressPlayRest:"para escuchar la grabación. Puedes volver a escucharla si lo necesitas.",
+    listenPrompt:"Escucha y elige la mejor respuesta.",
+    submitAnswer:"Enviar respuesta", next:"Siguiente",
+    audioErrorPrefix:"No se pudo cargar", audioErrorSuffix:"Verifica que el archivo exista y tenga el nombre correcto.",
+    results:"Resultados", suggestedPlacement:"Nivel sugerido",
+    combinedScore:"Puntaje combinado", questionsAnswered:"Preguntas respondidas",
+    ptsUnit:"pts", totalUnit:"total",
+    footnote:"La ubicación de nivel se basa en un puntaje combinado de ambas secciones. Un asesor del programa confirmará este nivel antes de tu primera clase.",
+    levels:{
+      INTRO:{name:"Introductorio", desc:"Totalmente nuevo en inglés. El programa comenzará con vocabulario básico, frases cotidianas y estructuras de oraciones simples."},
+      L1:{name:"Nivel 1", desc:"Comenzando a construir una base. Listo para fortalecer la gramática básica, el vocabulario cotidiano y la conversación simple."},
+      L2:{name:"Nivel 2", desc:"Creciente comodidad con el inglés cotidiano. Listo para ampliar el vocabulario y practicar conversaciones más conectadas."},
+      L3:{name:"Nivel 3", desc:"Un dominio sólido del inglés cotidiano. Listo para desarrollar fluidez y abordar temas más complejos del mundo real."},
+      L4:{name:"Nivel 4", desc:"Uso confiado y capaz del inglés en una variedad de situaciones. Listo para refinar la precisión y los matices."},
+      L5:{name:"Nivel 5", desc:"Un dominio sólido y completo del inglés. Listo para cursos avanzados y temas más especializados."},
+      ACP:{name:"Práctica de Conversación Avanzada", desc:"Altamente competente en inglés. Listo para enfocarse en la fluidez, los matices y la conversación natural en lugar de las habilidades básicas."}
+    }
+  },
+  fr: {
+    langName:"Français", dir:"ltr",
+    placementTestTag:"Test de Niveau",
+    introHero:"Déterminons votre niveau de départ.",
+    introLede:"Ce test comporte deux parties — Lecture et Compréhension orale. Il s'adapte au fur et à mesure : les questions deviennent plus difficiles, et chaque section se termine dès que nous avons une idée claire de votre niveau.",
+    ruleReading:"Les questions de lecture valent 2 points chacune.",
+    ruleListening:"Les questions de compréhension orale valent 3 points chacune — vous appuierez sur lecture pour entendre chacune d'elles.",
+    ruleStop:"Une section se termine après 3 réponses incorrectes, et vous passez directement à la partie suivante.",
+    ruleNoBack:"Il n'est pas possible de revenir en arrière une fois une réponse envoyée, alors prenez votre temps.",
+    ruleTime:"Compte environ 10 à 15 minutes. Trouvez un endroit calme pour la section de compréhension orale.",
+    startTest:"Commencer le test",
+    part1Reading:"Partie 1 · Lecture", part2Listening:"Partie 2 · Compréhension orale",
+    readingSectionTitle:"Section lecture", listeningSectionTitle:"Passons à la compréhension orale.",
+    readingSectionLede:"Lisez chaque court passage ou phrase, puis choisissez la meilleure réponse. Chaque bonne réponse vaut 2 points. Trois réponses incorrectes vous font passer à la section de compréhension orale.",
+    listeningSectionLede:"Vous entendrez un court enregistrement pour chaque question — appuyez sur le bouton de lecture, puis choisissez la meilleure réponse. Chaque bonne réponse vaut 3 points. Trois réponses incorrectes terminent le test.",
+    begin:"Commencer", startListeningSection:"Commencer la section de compréhension orale",
+    readingLabel:"Lecture", listeningLabel:"Compréhension orale",
+    readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
+    pressPlayBold:"Appuyez sur lecture", pressPlayRest:"pour entendre l'enregistrement. Vous pouvez le réécouter si nécessaire.",
+    listenPrompt:"Écoutez, puis choisissez la meilleure réponse.",
+    submitAnswer:"Envoyer la réponse", next:"Suivant",
+    audioErrorPrefix:"Impossible de charger", audioErrorSuffix:"Vérifiez que le fichier existe et qu'il est correctement nommé.",
+    results:"Résultats", suggestedPlacement:"Niveau suggéré",
+    combinedScore:"Score combiné", questionsAnswered:"Questions répondues",
+    ptsUnit:"pts", totalUnit:"total",
+    footnote:"Le niveau est basé sur un seuil de score combiné des deux sections. Un conseiller du programme confirmera ce niveau avant votre premier cours.",
+    levels:{
+      INTRO:{name:"Introduction", desc:"Totalement débutant en anglais. Le programme commencera par un vocabulaire de base, des phrases courantes et des structures de phrases simples."},
+      L1:{name:"Niveau 1", desc:"Début de la construction d'une base. Prêt à renforcer la grammaire de base, le vocabulaire courant et la conversation simple."},
+      L2:{name:"Niveau 2", desc:"Aisance croissante avec l'anglais courant. Prêt à élargir son vocabulaire et à pratiquer des conversations plus élaborées."},
+      L3:{name:"Niveau 3", desc:"Une bonne maîtrise de l'anglais courant. Prêt à développer sa fluidité et à aborder des sujets plus complexes et concrets."},
+      L4:{name:"Niveau 4", desc:"Utilisation confiante et compétente de l'anglais dans diverses situations. Prêt à affiner la précision et les nuances."},
+      L5:{name:"Niveau 5", desc:"Une maîtrise solide et complète de l'anglais. Prêt pour des cours avancés et des sujets plus spécialisés."},
+      ACP:{name:"Pratique de Conversation Avancée", desc:"Hautement compétent en anglais. Prêt à se concentrer sur la fluidité, les nuances et la conversation naturelle plutôt que sur les compétences de base."}
+    }
+  },
+  pt: {
+    langName:"Português", dir:"ltr",
+    placementTestTag:"Teste de Nivelamento",
+    introHero:"Vamos encontrar seu nível inicial.",
+    introLede:"Este teste tem duas partes — Leitura e Compreensão Auditiva. Ele se adapta conforme você avança: as perguntas ficam mais difíceis, e cada seção termina assim que tivermos uma ideia clara do seu nível.",
+    ruleReading:"As perguntas de leitura valem 2 pontos cada.",
+    ruleListening:"As perguntas de compreensão auditiva valem 3 pontos cada — você vai apertar o botão de reproduzir para ouvir cada uma.",
+    ruleStop:"Uma seção termina após 3 respostas incorretas, e você passa direto para a próxima parte.",
+    ruleNoBack:"Não é possível voltar depois de enviar uma resposta, então não tenha pressa.",
+    ruleTime:"Leva de 10 a 15 minutos. Procure um lugar tranquilo para a seção de compreensão auditiva.",
+    startTest:"Começar teste",
+    part1Reading:"Parte 1 · Leitura", part2Listening:"Parte 2 · Compreensão Auditiva",
+    readingSectionTitle:"Seção de leitura", listeningSectionTitle:"Agora, compreensão auditiva.",
+    readingSectionLede:"Leia cada trecho ou frase curta e escolha a melhor resposta. Cada resposta correta vale 2 pontos. Três respostas incorretas levam você à seção de compreensão auditiva.",
+    listeningSectionLede:"Você vai ouvir uma gravação curta para cada pergunta — aperte o botão de reproduzir e escolha a melhor resposta. Cada resposta correta vale 3 pontos. Três respostas incorretas encerram o teste.",
+    begin:"Começar", startListeningSection:"Começar seção de compreensão auditiva",
+    readingLabel:"Leitura", listeningLabel:"Compreensão Auditiva",
+    readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
+    pressPlayBold:"Aperte reproduzir", pressPlayRest:"para ouvir a gravação. Você pode ouvir de novo se precisar.",
+    listenPrompt:"Ouça e escolha a melhor resposta.",
+    submitAnswer:"Enviar resposta", next:"Próxima",
+    audioErrorPrefix:"Não foi possível carregar", audioErrorSuffix:"Verifique se o arquivo existe e está com o nome correto.",
+    results:"Resultados", suggestedPlacement:"Nível sugerido",
+    combinedScore:"Pontuação combinada", questionsAnswered:"Perguntas respondidas",
+    ptsUnit:"pts", totalUnit:"total",
+    footnote:"O nível é definido com base na pontuação combinada das duas seções. Um orientador do programa confirmará este nível antes da sua primeira aula.",
+    levels:{
+      INTRO:{name:"Introdutório", desc:"Totalmente novo no inglês. O programa vai começar com vocabulário básico, frases do dia a dia e estruturas de frases simples."},
+      L1:{name:"Nível 1", desc:"Começando a construir uma base. Pronto para fortalecer a gramática básica, o vocabulário do dia a dia e conversas simples."},
+      L2:{name:"Nível 2", desc:"Conforto crescente com o inglês do dia a dia. Pronto para ampliar o vocabulário e praticar conversas mais conectadas."},
+      L3:{name:"Nível 3", desc:"Um domínio sólido do inglês do dia a dia. Pronto para desenvolver fluência e lidar com temas mais complexos do mundo real."},
+      L4:{name:"Nível 4", desc:"Uso confiante e capaz do inglês em diversas situações. Pronto para refinar a precisão e as nuances."},
+      L5:{name:"Nível 5", desc:"Um domínio sólido e completo do inglês. Pronto para cursos avançados e temas mais especializados."},
+      ACP:{name:"Prática de Conversação Avançada", desc:"Altamente proficiente em inglês. Pronto para focar em fluência, nuances e conversação natural, em vez de habilidades básicas."}
+    }
+  },
+  ru: {
+    langName:"Русский", dir:"ltr",
+    placementTestTag:"Тест на определение уровня",
+    introHero:"Давайте определим ваш начальный уровень.",
+    introLede:"Тест состоит из двух частей — Чтение и Аудирование. Он адаптируется по мере прохождения: вопросы становятся сложнее, и каждая часть завершается, как только становится ясен ваш уровень.",
+    ruleReading:"Вопросы по чтению — 2 балла за каждый.",
+    ruleListening:"Вопросы по аудированию — 3 балла за каждый; вы будете нажимать «воспроизвести», чтобы прослушать каждый вопрос.",
+    ruleStop:"Часть завершается после 3 неверных ответов, и вы сразу переходите к следующей части.",
+    ruleNoBack:"Вернуться назад после отправки ответа нельзя, поэтому не спешите.",
+    ruleTime:"Занимает примерно 10–15 минут. Для части с аудированием найдите тихое место.",
+    startTest:"Начать тест",
+    part1Reading:"Часть 1 · Чтение", part2Listening:"Часть 2 · Аудирование",
+    readingSectionTitle:"Раздел чтения", listeningSectionTitle:"Переходим к аудированию.",
+    readingSectionLede:"Прочитайте каждый короткий отрывок или предложение и выберите лучший ответ. Каждый правильный ответ — 2 балла. После трёх неверных ответов вы перейдёте к разделу аудирования.",
+    listeningSectionLede:"Для каждого вопроса вы услышите короткую запись — нажмите кнопку воспроизведения и выберите лучший ответ. Каждый правильный ответ — 3 балла. После трёх неверных ответов тест завершится.",
+    begin:"Начать", startListeningSection:"Начать раздел аудирования",
+    readingLabel:"Чтение", listeningLabel:"Аудирование",
+    readingPtsShort:"2 балла", listeningPtsShort:"3 балла",
+    pressPlayBold:"Нажмите «воспроизвести»", pressPlayRest:"чтобы прослушать запись. Вы можете прослушать её снова, если нужно.",
+    listenPrompt:"Прослушайте и выберите лучший ответ.",
+    submitAnswer:"Отправить ответ", next:"Далее",
+    audioErrorPrefix:"Не удалось загрузить", audioErrorSuffix:"Проверьте, что файл существует и правильно назван.",
+    results:"Результаты", suggestedPlacement:"Рекомендуемый уровень",
+    combinedScore:"Суммарный балл", questionsAnswered:"Отвечено вопросов",
+    ptsUnit:"баллов", totalUnit:"всего",
+    footnote:"Уровень определяется по суммарному баллу за обе части. Куратор программы подтвердит этот уровень перед вашим первым занятием.",
+    levels:{
+      INTRO:{name:"Начальный", desc:"Совсем новичок в английском. Программа начнётся с базовой лексики, повседневных фраз и простой структуры предложений."},
+      L1:{name:"Уровень 1", desc:"Начало формирования базы. Готовность укреплять базовую грамматику, повседневную лексику и простое общение."},
+      L2:{name:"Уровень 2", desc:"Растущая уверенность в повседневном английском. Готовность расширять словарный запас и практиковать более связное общение."},
+      L3:{name:"Уровень 3", desc:"Уверенное владение повседневным английским. Готовность развивать беглость речи и разбирать более сложные, реальные темы."},
+      L4:{name:"Уровень 4", desc:"Уверенное и грамотное использование английского в разных ситуациях. Готовность оттачивать точность и нюансы."},
+      L5:{name:"Уровень 5", desc:"Сильное и разностороннее владение английским. Готовность к продвинутым курсам и более специализированным темам."},
+      ACP:{name:"Продвинутая разговорная практика", desc:"Высокий уровень владения английским. Готовность сосредоточиться на беглости речи, нюансах и естественном общении, а не на базовых навыках."}
+    }
+  },
+  uk: {
+    langName:"Українська", dir:"ltr",
+    placementTestTag:"Тест на визначення рівня",
+    introHero:"Визначимо ваш початковий рівень.",
+    introLede:"Тест складається з двох частин — Читання та Аудіювання. Він адаптується під час проходження: питання стають складнішими, і кожна частина завершується, щойно стає зрозумілим ваш рівень.",
+    ruleReading:"Питання з читання — 2 бали за кожне.",
+    ruleListening:"Питання з аудіювання — 3 бали за кожне; ви натискатимете «відтворити», щоб прослухати кожне питання.",
+    ruleStop:"Частина завершується після 3 неправильних відповідей, і ви одразу переходите до наступної частини.",
+    ruleNoBack:"Повернутися назад після надсилання відповіді неможливо, тож не поспішайте.",
+    ruleTime:"Триває приблизно 10–15 хвилин. Для частини з аудіюванням знайдіть тихе місце.",
+    startTest:"Почати тест",
+    part1Reading:"Частина 1 · Читання", part2Listening:"Частина 2 · Аудіювання",
+    readingSectionTitle:"Розділ читання", listeningSectionTitle:"Переходимо до аудіювання.",
+    readingSectionLede:"Прочитайте кожен короткий уривок або речення й оберіть найкращу відповідь. Кожна правильна відповідь — 2 бали. Після трьох неправильних відповідей ви перейдете до розділу аудіювання.",
+    listeningSectionLede:"Для кожного питання ви почуєте короткий запис — натисніть кнопку відтворення й оберіть найкращу відповідь. Кожна правильна відповідь — 3 бали. Після трьох неправильних відповідей тест завершиться.",
+    begin:"Почати", startListeningSection:"Почати розділ аудіювання",
+    readingLabel:"Читання", listeningLabel:"Аудіювання",
+    readingPtsShort:"2 бали", listeningPtsShort:"3 бали",
+    pressPlayBold:"Натисніть «відтворити»", pressPlayRest:"щоб прослухати запис. За потреби можна прослухати ще раз.",
+    listenPrompt:"Прослухайте й оберіть найкращу відповідь.",
+    submitAnswer:"Надіслати відповідь", next:"Далі",
+    audioErrorPrefix:"Не вдалося завантажити", audioErrorSuffix:"Перевірте, що файл існує та правильно названий.",
+    results:"Результати", suggestedPlacement:"Рекомендований рівень",
+    combinedScore:"Сумарний бал", questionsAnswered:"Опрацьовано питань",
+    ptsUnit:"балів", totalUnit:"усього",
+    footnote:"Рівень визначається за сумарним балом обох частин. Куратор програми підтвердить цей рівень перед вашим першим заняттям.",
+    levels:{
+      INTRO:{name:"Початковий", desc:"Абсолютний початківець в англійській. Програма розпочнеться з базової лексики, повсякденних фраз і простої структури речень."},
+      L1:{name:"Рівень 1", desc:"Початок формування бази. Готовність зміцнювати базову граматику, повсякденну лексику та просте спілкування."},
+      L2:{name:"Рівень 2", desc:"Зростаюча впевненість у повсякденній англійській. Готовність розширювати словниковий запас і практикувати більш пов'язане спілкування."},
+      L3:{name:"Рівень 3", desc:"Впевнене володіння повсякденною англійською. Готовність розвивати швидкість мовлення й опрацьовувати складніші, реальні теми."},
+      L4:{name:"Рівень 4", desc:"Впевнене й грамотне використання англійської в різних ситуаціях. Готовність вдосконалювати точність і нюанси."},
+      L5:{name:"Рівень 5", desc:"Сильне та різнобічне володіння англійською. Готовність до просунутих курсів і більш спеціалізованих тем."},
+      ACP:{name:"Просунута розмовна практика", desc:"Високий рівень володіння англійською. Готовність зосередитися на швидкості мовлення, нюансах і природному спілкуванні, а не на базових навичках."}
+    }
+  },
+  ar: {
+    langName:"العربية", dir:"rtl",
+    placementTestTag:"اختبار تحديد المستوى",
+    introHero:"لنحدّد مستواك المبدئي.",
+    introLede:"يتكوّن هذا الاختبار من قسمين — القراءة والاستماع. يتكيّف الاختبار أثناء تقدّمك: تصبح الأسئلة أصعب، وينتهي كل قسم بمجرد أن نكوّن فكرة واضحة عن مستواك.",
+    ruleReading:"قيمة كل سؤال قراءة نقطتان.",
+    ruleListening:"قيمة كل سؤال استماع 3 نقاط — ستضغط على زر التشغيل للاستماع إلى كل سؤال.",
+    ruleStop:"ينتهي القسم بعد 3 إجابات خاطئة، وتنتقل مباشرة إلى الجزء التالي.",
+    ruleNoBack:"لا يمكن الرجوع بعد إرسال الإجابة، لذا خذ وقتك.",
+    ruleTime:"يستغرق حوالي 10 إلى 15 دقيقة. اختر مكانًا هادئًا لقسم الاستماع.",
+    startTest:"ابدأ الاختبار",
+    part1Reading:"الجزء 1 · القراءة", part2Listening:"الجزء 2 · الاستماع",
+    readingSectionTitle:"قسم القراءة", listeningSectionTitle:"الآن ننتقل إلى الاستماع.",
+    readingSectionLede:"اقرأ كل مقطع أو جملة قصيرة، ثم اختر الإجابة الأفضل. قيمة كل إجابة صحيحة نقطتان. بعد 3 إجابات خاطئة تنتقل إلى قسم الاستماع.",
+    listeningSectionLede:"ستستمع إلى تسجيل قصير لكل سؤال — اضغط على زر التشغيل ثم اختر الإجابة الأفضل. قيمة كل إجابة صحيحة 3 نقاط. بعد 3 إجابات خاطئة ينتهي الاختبار.",
+    begin:"ابدأ", startListeningSection:"ابدأ قسم الاستماع",
+    readingLabel:"القراءة", listeningLabel:"الاستماع",
+    readingPtsShort:"نقطتان", listeningPtsShort:"3 نقاط",
+    pressPlayBold:"اضغط على تشغيل", pressPlayRest:"للاستماع إلى التسجيل. يمكنك إعادة الاستماع إذا احتجت لذلك.",
+    listenPrompt:"استمع، ثم اختر الإجابة الأفضل.",
+    submitAnswer:"إرسال الإجابة", next:"التالي",
+    audioErrorPrefix:"تعذّر تحميل", audioErrorSuffix:"تأكد من وجود الملف وصحة اسمه.",
+    results:"النتائج", suggestedPlacement:"المستوى المقترح",
+    combinedScore:"النتيجة الإجمالية", questionsAnswered:"الأسئلة المُجابة",
+    ptsUnit:"نقاط", totalUnit:"الإجمالي",
+    footnote:"يُحدَّد المستوى بناءً على النتيجة الإجمالية لكلا القسمين. سيؤكد أحد مستشاري البرنامج هذا المستوى قبل أول حصة لك.",
+    levels:{
+      INTRO:{name:"تمهيدي", desc:"مبتدئ تمامًا في اللغة الإنجليزية. سيبدأ البرنامج بمفردات أساسية وعبارات يومية وتراكيب جمل بسيطة."},
+      L1:{name:"المستوى 1", desc:"بداية بناء الأساس. جاهز لتقوية القواعد الأساسية والمفردات اليومية والمحادثة البسيطة."},
+      L2:{name:"المستوى 2", desc:"راحة متزايدة في التعامل مع اللغة الإنجليزية اليومية. جاهز لتوسيع المفردات وممارسة محادثات أكثر ترابطًا."},
+      L3:{name:"المستوى 3", desc:"إتقان جيد للغة الإنجليزية اليومية. جاهز لتطوير الطلاقة وتناول مواضيع أكثر تعقيدًا من واقع الحياة."},
+      L4:{name:"المستوى 4", desc:"استخدام واثق وكفؤ للغة الإنجليزية في مجموعة متنوعة من المواقف. جاهز لصقل الدقة والفروق الدقيقة."},
+      L5:{name:"المستوى 5", desc:"إتقان قوي وشامل للغة الإنجليزية. جاهز للدورات المتقدمة والمواضيع الأكثر تخصصًا."},
+      ACP:{name:"ممارسة المحادثة المتقدمة", desc:"إتقان عالٍ للغة الإنجليزية. جاهز للتركيز على الطلاقة والفروق الدقيقة والمحادثة الطبيعية بدلاً من المهارات الأساسية."}
+    }
+  },
+  zh: {
+    langName:"中文", dir:"ltr",
+    placementTestTag:"分级测试",
+    introHero:"让我们来确定你的起始水平。",
+    introLede:"本测试分为两部分——阅读和听力。测试会根据你的表现自动调整难度：题目会逐渐变难，一旦能清楚判断你的水平，该部分就会结束。",
+    ruleReading:"每道阅读题 2 分。",
+    ruleListening:"每道听力题 3 分——你需要点击播放按钮来听每道题。",
+    ruleStop:"每部分在答错 3 题后结束，并直接进入下一部分。",
+    ruleNoBack:"提交答案后无法返回修改，请仔细作答。",
+    ruleTime:"大约需要 10 到 15 分钟。请为听力部分找一个安静的地方。",
+    startTest:"开始测试",
+    part1Reading:"第一部分 · 阅读", part2Listening:"第二部分 · 听力",
+    readingSectionTitle:"阅读部分", listeningSectionTitle:"现在进入听力部分。",
+    readingSectionLede:"阅读每段短文或句子，然后选择最佳答案。每答对一题得 2 分。答错 3 题后将进入听力部分。",
+    listeningSectionLede:"每道题你都会听到一段简短录音——点击播放按钮，然后选择最佳答案。每答对一题得 3 分。答错 3 题测试将结束。",
+    begin:"开始", startListeningSection:"开始听力部分",
+    readingLabel:"阅读", listeningLabel:"听力",
+    readingPtsShort:"2 分", listeningPtsShort:"3 分",
+    pressPlayBold:"点击播放", pressPlayRest:"以听录音。如有需要可以重播。",
+    listenPrompt:"听录音，然后选择最佳答案。",
+    submitAnswer:"提交答案", next:"下一题",
+    audioErrorPrefix:"无法加载", audioErrorSuffix:"请检查文件是否存在且命名正确。",
+    results:"测试结果", suggestedPlacement:"建议分级",
+    combinedScore:"总分", questionsAnswered:"已答题数",
+    ptsUnit:"分", totalUnit:"总计",
+    footnote:"分级结果基于两部分的综合得分。项目顾问会在你第一节课前确认此分级。",
+    levels:{
+      INTRO:{name:"入门级", desc:"完全没有英语基础。课程将从基础词汇、日常用语和简单句型开始。"},
+      L1:{name:"1 级", desc:"开始打基础。准备好加强基础语法、日常词汇和简单对话。"},
+      L2:{name:"2 级", desc:"对日常英语越来越自如。准备好扩展词汇量，练习更连贯的对话。"},
+      L3:{name:"3 级", desc:"对日常英语有扎实的掌握。准备好提升流利度，接触更复杂的现实话题。"},
+      L4:{name:"4 级", desc:"能够自信、熟练地在各种情境中使用英语。准备好打磨准确度和细微差别。"},
+      L5:{name:"5 级", desc:"对英语有全面而扎实的掌握。准备好学习进阶课程和更专业的话题。"},
+      ACP:{name:"高级会话练习", desc:"英语水平很高。准备好把重点放在流利度、细微差别和自然对话上，而不是基础技能。"}
+    }
+  }
+};
+
+const LANG_ORDER = ["en","es","fr","pt","ru","uk","ar","zh"];
 
 /* ---------------- STATE ---------------- */
 let state = {
@@ -433,12 +759,55 @@ let state = {
   lIndex:0, lWrong:0, lScore:0, lAnswered:0,
   selected:null,
   locked:false,
-  hasPlayed:false
+  hasPlayed:false,
+  lang:"en"
 };
 
 function levelFor(score){
   for(const l of LEVELS){ if(score>=l.min && score<=l.max) return l; }
   return LEVELS[LEVELS.length-1];
+}
+
+/* ---------------- TRANSLATION HELPERS ---------------- */
+function t(key){
+  const dict = translations[state.lang] || translations.en;
+  return (key in dict) ? dict[key] : translations.en[key];
+}
+function tLevel(code){
+  const dict = translations[state.lang] || translations.en;
+  const entry = (dict.levels && dict.levels[code]) || translations.en.levels[code];
+  return entry;
+}
+function populateLangSelect(){
+  const sel = document.getElementById('langSelect');
+  if(!sel || sel.options.length) return;
+  LANG_ORDER.forEach(code=>{
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = translations[code].langName;
+    if(code===state.lang) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+function setLang(lang){
+  if(!translations[lang]) return;
+  state.lang = lang;
+  const dir = translations[lang].dir === 'rtl' ? 'rtl' : 'ltr';
+  document.documentElement.dir = dir;
+  document.documentElement.lang = lang;
+  const sel = document.getElementById('langSelect');
+  if(sel) sel.value = lang;
+  rerenderCurrentScreen();
+}
+function rerenderCurrentScreen(){
+  switch(state.screen){
+    case "intro": renderIntro(); break;
+    case "readingIntro": renderSectionIntro("reading"); break;
+    case "listeningIntro": renderSectionIntro("listening"); break;
+    case "reading": case "listening": renderQuestion(); break;
+    case "results": renderResults(); break;
+    default: renderIntro();
+  }
 }
 
 /* ---------------- RENDER HELPERS ---------------- */
@@ -459,33 +828,33 @@ function letters(i){ return ['A','B','C','D'][i]; }
 /* ---------------- SCREENS ---------------- */
 function renderIntro(){
   topRight.innerHTML = '';
+  populateLangSelect();
   root.innerHTML = `
   <div class="card fade-in">
-    <span class="section-tag">Placement Test</span>
-    <h1 class="hero">Let's find your starting level.</h1>
-    <p class="lede">This test has two parts — Reading and Listening. It adapts as you go: questions get harder, and each section ends as soon as we have a clear read on your level.</p>
+    <span class="section-tag">${t('placementTestTag')}</span>
+    <h1 class="hero">${t('introHero')}</h1>
+    <p class="lede">${t('introLede')}</p>
     <ul class="rule-list">
-      <li>Reading questions are worth 1 point each.</li>
-      <li>Listening questions are worth 2 points each — you'll press play to hear each one.</li>
-      <li>A section ends after 3 incorrect answers, and moves you straight to the next part.</li>
-      <li>There's no going back once you submit an answer, so take your time.</li>
-      <li>Takes about 10–15 minutes. Find a quiet spot for the listening section.</li>
+      <li>${t('ruleReading')}</li>
+      <li>${t('ruleListening')}</li>
+      <li>${t('ruleStop')}</li>
+      <li>${t('ruleNoBack')}</li>
+      <li>${t('ruleTime')}</li>
     </ul>
-    <button class="primary" onclick="startReading()">Start test</button>
+    <button class="primary" onclick="startReading()">${t('startTest')}</button>
   </div>`;
 }
 
 function renderSectionIntro(kind){
   topRight.innerHTML = '';
+  populateLangSelect();
   const isListening = kind==="listening";
   root.innerHTML = `
   <div class="card fade-in">
-    <span class="section-tag ${isListening?'listening':''}">${isListening?'Part 2 · Listening':'Part 1 · Reading'}</span>
-    <h1 class="hero">${isListening?'Now for listening.':'Reading section'}</h1>
-    <p class="lede">${isListening
-      ? "You'll hear a short recording for each question — press the play button, then choose the best answer. Each correct answer is worth 2 points. Three incorrect answers ends the test."
-      : "Read each short passage or sentence, then choose the best answer. Each correct answer is worth 1 point. Three incorrect answers moves you on to the listening section."}</p>
-    <button class="primary" onclick="${isListening?'startListening()':'goToQuestion()'}">${isListening?'Start listening section':'Begin'}</button>
+    <span class="section-tag ${isListening?'listening':''}">${isListening?t('part2Listening'):t('part1Reading')}</span>
+    <h1 class="hero">${isListening?t('listeningSectionTitle'):t('readingSectionTitle')}</h1>
+    <p class="lede">${isListening?t('listeningSectionLede'):t('readingSectionLede')}</p>
+    <button class="primary" onclick="${isListening?'startListening()':'goToQuestion()'}">${isListening?t('startListeningSection'):t('begin')}</button>
   </div>`;
 }
 
@@ -495,9 +864,10 @@ function renderQuestion(){
   const idx = isListening ? state.lIndex : state.rIndex;
   const wrong = isListening ? state.lWrong : state.rWrong;
   const q = bank[idx];
-  const points = isListening ? LISTENING_POINTS : READING_POINTS;
+  const ptsShort = isListening ? t('listeningPtsShort') : t('readingPtsShort');
 
   topRight.innerHTML = renderStrikes(wrong);
+  populateLangSelect();
 
   const progressPct = Math.round((idx/bank.length)*100);
 
@@ -506,7 +876,7 @@ function renderQuestion(){
     mediaHtml = `
       <div class="listen-box">
         <button class="play-btn" id="playBtn" onclick="playAudio()">▶</button>
-        <div class="listen-copy"><b>Press play</b> to hear the recording. You can replay it if you need to.</div>
+        <div class="listen-copy"><b>${t('pressPlayBold')}</b> ${t('pressPlayRest')}</div>
       </div>
       <div class="audio-note" id="audioNote"></div>`;
   } else if(q.passage){
@@ -519,16 +889,18 @@ function renderQuestion(){
       <span>${opt}</span>
     </div>`).join('');
 
+  const questionText = isListening ? t('listenPrompt') : q.question;
+
   root.innerHTML = `
   <div class="card fade-in">
-    <span class="section-tag ${isListening?'listening':''}">${isListening?'Listening':'Reading'} · Q${idx+1} · ${points} pt${points>1?'s':''}</span>
+    <span class="section-tag ${isListening?'listening':''}">${isListening?t('listeningLabel'):t('readingLabel')} · Q${idx+1} · ${ptsShort}</span>
     <div class="progress-rail"><div class="progress-fill" style="width:${progressPct}%"></div></div>
     ${mediaHtml}
-    <div class="question">${q.question}</div>
+    <div class="question">${questionText}</div>
     <div class="options">${optionsHtml}</div>
     <div class="nav-row">
       <button class="primary" id="nextBtn" ${state.selected===null?'disabled':''} onclick="submitAnswer()">
-        ${state.locked ? 'Next' : 'Submit answer'}
+        ${state.locked ? t('next') : t('submitAnswer')}
       </button>
     </div>
   </div>`;
@@ -538,8 +910,10 @@ function renderQuestion(){
 
 function renderResults(){
   topRight.innerHTML = '';
+  populateLangSelect();
   const total = state.rScore + state.lScore;
   const lvl = levelFor(total);
+  const lvlText = tLevel(lvl.code);
   const pct = Math.min(100, Math.round((total/MAX_POSSIBLE)*100));
   const rMax = state.rAnswered*READING_POINTS;
   const lMax = state.lAnswered*LISTENING_POINTS;
@@ -549,7 +923,7 @@ function renderResults(){
 
   root.innerHTML = `
   <div class="card fade-in">
-    <span class="section-tag">Results</span>
+    <span class="section-tag">${t('results')}</span>
     <svg class="result-icon" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <ellipse cx="65" cy="90" rx="48" ry="6" fill="#1F3A38" opacity="0.08"/>
       <g transform="rotate(-4 65 60)">
@@ -568,11 +942,11 @@ function renderResults(){
         <path d="M0 14 C0 4, 10 -2, 18 2 C20 -4, 30 -2, 30 8 C30 16, 20 20, 15 24 C10 20, 0 20, 0 14Z" fill="#71A943" opacity="0.9"/>
       </g>
     </svg>
-    <div class="level-code">${lvl.code} · Suggested placement</div>
-    <div class="level-name">${lvl.name}</div>
-    <p class="level-desc">${lvl.desc}</p>
+    <div class="level-code">${lvl.code} · ${t('suggestedPlacement')}</div>
+    <div class="level-name">${lvlText.name}</div>
+    <p class="level-desc">${lvlText.desc}</p>
 
-    <div class="gauge">
+    <div class="gauge" dir="ltr">
       <div class="gauge-track">
         <div class="gauge-bands">
           ${bandsHtml}
@@ -586,24 +960,24 @@ function renderResults(){
 
     <div class="score-grid">
       <div class="score-box">
-        <div class="label">Reading</div>
-        <div class="val">${state.rScore} <small>/ ${rMax} pts</small></div>
+        <div class="label">${t('readingLabel')}</div>
+        <div class="val">${state.rScore} <small>/ ${rMax} ${t('ptsUnit')}</small></div>
       </div>
       <div class="score-box">
-        <div class="label">Listening</div>
-        <div class="val">${state.lScore} <small>/ ${lMax} pts</small></div>
+        <div class="label">${t('listeningLabel')}</div>
+        <div class="val">${state.lScore} <small>/ ${lMax} ${t('ptsUnit')}</small></div>
       </div>
       <div class="score-box">
-        <div class="label">Combined score</div>
-        <div class="val">${total} <small>/ ${MAX_POSSIBLE} pts</small></div>
+        <div class="label">${t('combinedScore')}</div>
+        <div class="val">${total} <small>/ ${MAX_POSSIBLE} ${t('ptsUnit')}</small></div>
       </div>
       <div class="score-box">
-        <div class="label">Questions answered</div>
-        <div class="val">${state.rAnswered + state.lAnswered} <small>total</small></div>
+        <div class="label">${t('questionsAnswered')}</div>
+        <div class="val">${state.rAnswered + state.lAnswered} <small>${t('totalUnit')}</small></div>
       </div>
     </div>
 
-    <p class="footnote">Placement is based on a combined-score cut-off across both sections. A program advisor will confirm this level before your first class.</p>
+    <p class="footnote">${t('footnote')}</p>
   </div>`;
 }
 
@@ -663,7 +1037,7 @@ function markOption(correct, answerIdx){
     if(i===answerIdx){ el.style.borderColor='#2E7D6B'; el.style.background='rgba(46,125,107,.08)'; }
     else if(i===state.selected && !correct){ el.style.borderColor='#B5493F'; el.style.background='rgba(181,73,63,.07)'; }
   });
-  document.getElementById('nextBtn').innerText='Next';
+  document.getElementById('nextBtn').innerText=t('next');
 }
 
 function advance(){
@@ -709,7 +1083,7 @@ function playAudio(){
   audioEl.onended = ()=>{ btn.classList.remove('playing'); btn.innerText='▶'; };
   audioEl.onerror = ()=>{
     btn.classList.remove('playing'); btn.innerText='▶';
-    if(noteEl) noteEl.innerHTML = `Couldn't load <code>${q.audioFile}</code>. Check the file exists and is named correctly.`;
+    if(noteEl) noteEl.innerHTML = `${t('audioErrorPrefix')} <code>${q.audioFile}</code>. ${t('audioErrorSuffix')}`;
   };
 
   const playPromise = audioEl.play();
