@@ -275,13 +275,21 @@
   }
   .option.selected .letter{border-color:var(--ink);color:var(--ink);background:#fff;}
   .option-idk{
+    margin-top:10px;
     border-style:dashed;
     color:var(--text-soft);
     font-style:italic;
   }
-  .option-idk .letter{color:var(--text-soft);border-style:dashed;}
+  .option-idk .letter{
+    color:#fff;
+    background:var(--text-soft);
+    border-style:solid;
+    border-color:var(--text-soft);
+    font-style:normal;
+    font-weight:800;
+  }
   .option-idk.selected{border-style:solid;color:var(--text);}
-  .option-idk.selected .letter{border-style:solid;}
+  .option-idk.selected .letter{background:var(--ink);border-color:var(--ink);}
 
   .nav-row{display:flex;justify-content:flex-end;}
 
@@ -462,7 +470,7 @@ const readingQuestions = [
   {level:"A2", question:"Can you ___________ weekends?", options:["work","works","to work","working"], answer:0},
   {level:"A2", question:"It's summer. The weather is ___________.", options:["cold","hot","snowy","sun"], answer:1},
   {level:"A2", question:"Did you pay the bill?", options:["Yes, I pay it.","No, I didn't pay them.","No, you didn't pay it.","Yes, I paid it."], answer:3},
-  {level:"B1", question:"How much ___________ the rent?", options:["is","does","are","be"], answer:0},
+  {level:"B1", question:"How much ___________ the rent?", options:["Is","does","are","be"], answer:0},
   {level:"B1", question:"When ___________?", options:["did they get married","they get married","they got married","do they got"], answer:0},
   {level:"B1", question:"Yesterday my brother ___________ a new car.", options:["buy","buyed","buys","bought"], answer:3},
   {level:"B1", question:"I ___________ going to Denver tomorrow.", options:["will","am","are","be"], answer:1},
@@ -474,7 +482,7 @@ const readingQuestions = [
   {level:"B2", question:"I'd like something ___________ my headache.", options:["of","to","for","in"], answer:2},
   {level:"B2", question:"Did you get ___________ in the mail?", options:["nothing","anyone","nobody","anything"], answer:3},
   {level:"B2", question:"That movie is very ______________. I loved it.", options:["boring","excited","exciting","bored"], answer:2},
-  {level:"B2", question:"Oops! I brought my keys ___________ I forgot my wallet.", options:[". and",", or",", so",", but"], answer:3},
+  {level:"B2", question:"Oops! I brought my keys ___________ I forgot my wallet.", options:[". And",", or",", so",", but"], answer:3},
   {level:"B2", question:"Have they ever ___________ their house?", options:["paint","painting","paints","painted"], answer:3},
   {level:"C1", question:"Lola got a ticket. She ___________ and driving.", options:["be texting","texts","was texting","were texting"], answer:2},
   {level:"C1", question:"If you won a million dollars, ___________?", options:["what would you do","what will you do","what do you do","what did you do"], answer:0},
@@ -562,7 +570,7 @@ const translations = {
     ptsUnit:"pts", totalUnit:"total",
     footnote:"Placement is based on a combined-score cut-off across both sections. A program advisor will confirm this level before your first class.",
     shareHeading:"Share these results", emailResultsBtn:"Email results", copyResultsBtn:"Copy results", shareResultsBtn:"Share", copiedConfirmation:"Copied to clipboard", emailSubject:"My Placement Test Results",
-    yourNameLabel:"Your name", yourNamePlaceholder:"Enter your full name", downloadCertificateBtn:"Download certificate", shareCertificateBtn:"Share certificate", certificateTitle:"Certificate of Placement", certificateIntro:"This certifies that", certificatePlacementText:"has been placed in", certificateDateLabel:"Date", idontknow:"I don't know.",
+    yourNameLabel:"Your name", yourNamePlaceholder:"Enter your full name", yourEmailLabel:"Your email (optional)", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"Download certificate", shareCertificateBtn:"Share certificate", certificateTitle:"Certificate of Placement", certificateIntro:"This certifies that", certificatePlacementText:"has been placed in", certificateDateLabel:"Date", idontknow:"I don't know.",
     levels:{
       INTRO:{name:"Intro", desc:"Brand new to English. The program will start with foundational vocabulary, everyday phrases, and simple sentence structure."},
       L1:{name:"Level 1", desc:"Beginning to build a foundation. Ready to strengthen core grammar, everyday vocabulary, and simple conversation."},
@@ -600,7 +608,7 @@ const translations = {
     ptsUnit:"pts", totalUnit:"total",
     footnote:"La ubicación de nivel se basa en un puntaje combinado de ambas secciones. Un asesor del programa confirmará este nivel antes de tu primera clase.",
     shareHeading:"Comparte estos resultados", emailResultsBtn:"Enviar por correo", copyResultsBtn:"Copiar resultados", shareResultsBtn:"Compartir", copiedConfirmation:"Copiado al portapapeles", emailSubject:"Mis resultados del examen de nivelación",
-    yourNameLabel:"Tu nombre", yourNamePlaceholder:"Escribe tu nombre completo", downloadCertificateBtn:"Descargar certificado", shareCertificateBtn:"Compartir certificado", certificateTitle:"Certificado de Nivelación", certificateIntro:"Esto certifica que", certificatePlacementText:"ha sido ubicado/a en", certificateDateLabel:"Fecha", idontknow:"No lo sé.",
+    yourNameLabel:"Tu nombre", yourNamePlaceholder:"Escribe tu nombre completo", yourEmailLabel:"Tu correo electrónico (opcional)", yourEmailPlaceholder:"tucorreo@ejemplo.com", downloadCertificateBtn:"Descargar certificado", shareCertificateBtn:"Compartir certificado", certificateTitle:"Certificado de Nivelación", certificateIntro:"Esto certifica que", certificatePlacementText:"ha sido ubicado/a en", certificateDateLabel:"Fecha", idontknow:"No lo sé.",
     levels:{
       INTRO:{name:"Introductorio", desc:"Totalmente nuevo en inglés. El programa comenzará con vocabulario básico, frases cotidianas y estructuras de oraciones simples."},
       L1:{name:"Nivel 1", desc:"Comenzando a construir una base. Listo para fortalecer la gramática básica, el vocabulario cotidiano y la conversación simple."},
@@ -638,7 +646,7 @@ const translations = {
     ptsUnit:"pts", totalUnit:"total",
     footnote:"Le niveau est basé sur un seuil de score combiné des deux sections. Un conseiller du programme confirmera ce niveau avant votre premier cours.",
     shareHeading:"Partagez ces résultats", emailResultsBtn:"Envoyer par e-mail", copyResultsBtn:"Copier les résultats", shareResultsBtn:"Partager", copiedConfirmation:"Copié dans le presse-papiers", emailSubject:"Mes résultats du test de niveau",
-    yourNameLabel:"Votre nom", yourNamePlaceholder:"Entrez votre nom complet", downloadCertificateBtn:"Télécharger le certificat", shareCertificateBtn:"Partager le certificat", certificateTitle:"Certificat de Niveau", certificateIntro:"Ceci certifie que", certificatePlacementText:"a été placé(e) au", certificateDateLabel:"Date", idontknow:"Je ne sais pas.",
+    yourNameLabel:"Votre nom", yourNamePlaceholder:"Entrez votre nom complet", yourEmailLabel:"Votre e-mail (facultatif)", yourEmailPlaceholder:"vous@exemple.com", downloadCertificateBtn:"Télécharger le certificat", shareCertificateBtn:"Partager le certificat", certificateTitle:"Certificat de Niveau", certificateIntro:"Ceci certifie que", certificatePlacementText:"a été placé(e) au", certificateDateLabel:"Date", idontknow:"Je ne sais pas.",
     levels:{
       INTRO:{name:"Introduction", desc:"Totalement débutant en anglais. Le programme commencera par un vocabulaire de base, des phrases courantes et des structures de phrases simples."},
       L1:{name:"Niveau 1", desc:"Début de la construction d'une base. Prêt à renforcer la grammaire de base, le vocabulaire courant et la conversation simple."},
@@ -676,7 +684,7 @@ const translations = {
     ptsUnit:"pts", totalUnit:"total",
     footnote:"O nível é definido com base na pontuação combinada das duas seções. Um orientador do programa confirmará este nível antes da sua primeira aula.",
     shareHeading:"Compartilhe estes resultados", emailResultsBtn:"Enviar por e-mail", copyResultsBtn:"Copiar resultados", shareResultsBtn:"Compartilhar", copiedConfirmation:"Copiado para a área de transferência", emailSubject:"Meus resultados do teste de nivelamento",
-    yourNameLabel:"Seu nome", yourNamePlaceholder:"Digite seu nome completo", downloadCertificateBtn:"Baixar certificado", shareCertificateBtn:"Compartilhar certificado", certificateTitle:"Certificado de Nivelamento", certificateIntro:"Isto certifica que", certificatePlacementText:"foi classificado(a) no", certificateDateLabel:"Data", idontknow:"Não sei.",
+    yourNameLabel:"Seu nome", yourNamePlaceholder:"Digite seu nome completo", yourEmailLabel:"Seu e-mail (opcional)", yourEmailPlaceholder:"voce@exemplo.com", downloadCertificateBtn:"Baixar certificado", shareCertificateBtn:"Compartilhar certificado", certificateTitle:"Certificado de Nivelamento", certificateIntro:"Isto certifica que", certificatePlacementText:"foi classificado(a) no", certificateDateLabel:"Data", idontknow:"Não sei.",
     levels:{
       INTRO:{name:"Introdutório", desc:"Totalmente novo no inglês. O programa vai começar com vocabulário básico, frases do dia a dia e estruturas de frases simples."},
       L1:{name:"Nível 1", desc:"Começando a construir uma base. Pronto para fortalecer a gramática básica, o vocabulário do dia a dia e conversas simples."},
@@ -714,7 +722,7 @@ const translations = {
     ptsUnit:"баллов", totalUnit:"всего",
     footnote:"Уровень определяется по суммарному баллу за обе части. Куратор программы подтвердит этот уровень перед вашим первым занятием.",
     shareHeading:"Поделитесь результатами", emailResultsBtn:"Отправить по эл. почте", copyResultsBtn:"Скопировать результаты", shareResultsBtn:"Поделиться", copiedConfirmation:"Скопировано в буфер обмена", emailSubject:"Мои результаты теста на определение уровня",
-    yourNameLabel:"Ваше имя", yourNamePlaceholder:"Введите полное имя", downloadCertificateBtn:"Скачать сертификат", shareCertificateBtn:"Поделиться сертификатом", certificateTitle:"Сертификат об уровне", certificateIntro:"Настоящим подтверждается, что", certificatePlacementText:"определён(а) на уровень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
+    yourNameLabel:"Ваше имя", yourNamePlaceholder:"Введите полное имя", yourEmailLabel:"Ваш email (необязательно)", yourEmailPlaceholder:"vy@example.com", downloadCertificateBtn:"Скачать сертификат", shareCertificateBtn:"Поделиться сертификатом", certificateTitle:"Сертификат об уровне", certificateIntro:"Настоящим подтверждается, что", certificatePlacementText:"определён(а) на уровень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
     levels:{
       INTRO:{name:"Начальный", desc:"Совсем новичок в английском. Программа начнётся с базовой лексики, повседневных фраз и простой структуры предложений."},
       L1:{name:"Уровень 1", desc:"Начало формирования базы. Готовность укреплять базовую грамматику, повседневную лексику и простое общение."},
@@ -752,7 +760,7 @@ const translations = {
     ptsUnit:"балів", totalUnit:"усього",
     footnote:"Рівень визначається за сумарним балом обох частин. Куратор програми підтвердить цей рівень перед вашим першим заняттям.",
     shareHeading:"Поділіться результатами", emailResultsBtn:"Надіслати електронною поштою", copyResultsBtn:"Скопіювати результати", shareResultsBtn:"Поділитися", copiedConfirmation:"Скопійовано в буфер обміну", emailSubject:"Мої результати тесту на визначення рівня",
-    yourNameLabel:"Ваше ім'я", yourNamePlaceholder:"Введіть повне ім'я", downloadCertificateBtn:"Завантажити сертифікат", shareCertificateBtn:"Поділитися сертифікатом", certificateTitle:"Сертифікат про рівень", certificateIntro:"Цим підтверджується, що", certificatePlacementText:"визначено на рівень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
+    yourNameLabel:"Ваше ім'я", yourNamePlaceholder:"Введіть повне ім'я", yourEmailLabel:"Ваш email (необов'язково)", yourEmailPlaceholder:"vy@example.com", downloadCertificateBtn:"Завантажити сертифікат", shareCertificateBtn:"Поділитися сертифікатом", certificateTitle:"Сертифікат про рівень", certificateIntro:"Цим підтверджується, що", certificatePlacementText:"визначено на рівень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
     levels:{
       INTRO:{name:"Початковий", desc:"Абсолютний початківець в англійській. Програма розпочнеться з базової лексики, повсякденних фраз і простої структури речень."},
       L1:{name:"Рівень 1", desc:"Початок формування бази. Готовність зміцнювати базову граматику, повсякденну лексику та просте спілкування."},
@@ -790,7 +798,7 @@ const translations = {
     ptsUnit:"نقاط", totalUnit:"الإجمالي",
     footnote:"يُحدَّد المستوى بناءً على النتيجة الإجمالية لكلا القسمين. سيؤكد أحد مستشاري البرنامج هذا المستوى قبل أول حصة لك.",
     shareHeading:"شارك هذه النتائج", emailResultsBtn:"إرسال بالبريد الإلكتروني", copyResultsBtn:"نسخ النتائج", shareResultsBtn:"مشاركة", copiedConfirmation:"تم النسخ إلى الحافظة", emailSubject:"نتائج اختبار تحديد المستوى الخاص بي",
-    yourNameLabel:"اسمك", yourNamePlaceholder:"أدخل اسمك الكامل", downloadCertificateBtn:"تنزيل الشهادة", shareCertificateBtn:"مشاركة الشهادة", certificateTitle:"شهادة تحديد المستوى", certificateIntro:"تشهد هذه الوثيقة بأن", certificatePlacementText:"قد تم تصنيفه/تصنيفها في", certificateDateLabel:"التاريخ", idontknow:"لا أعرف.",
+    yourNameLabel:"اسمك", yourNamePlaceholder:"أدخل اسمك الكامل", yourEmailLabel:"بريدك الإلكتروني (اختياري)", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"تنزيل الشهادة", shareCertificateBtn:"مشاركة الشهادة", certificateTitle:"شهادة تحديد المستوى", certificateIntro:"تشهد هذه الوثيقة بأن", certificatePlacementText:"قد تم تصنيفه/تصنيفها في", certificateDateLabel:"التاريخ", idontknow:"لا أعرف.",
     levels:{
       INTRO:{name:"تمهيدي", desc:"مبتدئ تمامًا في اللغة الإنجليزية. سيبدأ البرنامج بمفردات أساسية وعبارات يومية وتراكيب جمل بسيطة."},
       L1:{name:"المستوى 1", desc:"بداية بناء الأساس. جاهز لتقوية القواعد الأساسية والمفردات اليومية والمحادثة البسيطة."},
@@ -828,7 +836,7 @@ const translations = {
     ptsUnit:"分", totalUnit:"总计",
     footnote:"分级结果基于两部分的综合得分。项目顾问会在你第一节课前确认此分级。",
     shareHeading:"分享结果", emailResultsBtn:"通过邮件发送", copyResultsBtn:"复制结果", shareResultsBtn:"分享", copiedConfirmation:"已复制到剪贴板", emailSubject:"我的分级测试结果",
-    yourNameLabel:"你的姓名", yourNamePlaceholder:"请输入你的全名", downloadCertificateBtn:"下载证书", shareCertificateBtn:"分享证书", certificateTitle:"分级证书", certificateIntro:"兹证明", certificatePlacementText:"已被评定为", certificateDateLabel:"日期", idontknow:"我不知道。",
+    yourNameLabel:"你的姓名", yourNamePlaceholder:"请输入你的全名", yourEmailLabel:"你的邮箱（选填）", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"下载证书", shareCertificateBtn:"分享证书", certificateTitle:"分级证书", certificateIntro:"兹证明", certificatePlacementText:"已被评定为", certificateDateLabel:"日期", idontknow:"我不知道。",
     levels:{
       INTRO:{name:"入门级", desc:"完全没有英语基础。课程将从基础词汇、日常用语和简单句型开始。"},
       L1:{name:"1 级", desc:"开始打基础。准备好加强基础语法、日常词汇和简单对话。"},
@@ -852,7 +860,8 @@ let state = {
   locked:false,
   hasPlayed:false,
   lang:"en",
-  studentName:""
+  studentName:"",
+  studentEmail:""
 };
 
 function levelFor(score){
@@ -937,6 +946,10 @@ function renderIntro(){
     <input type="text" id="studentNameInput" class="name-input" placeholder="${t('yourNamePlaceholder')}"
       value="${state.studentName.replace(/"/g,'&quot;')}"
       oninput="state.studentName=this.value; document.getElementById('startBtn').disabled = !this.value.trim();">
+    <label class="name-label" for="studentEmailInput">${t('yourEmailLabel')}</label>
+    <input type="email" id="studentEmailInput" class="name-input" placeholder="${t('yourEmailPlaceholder')}"
+      value="${state.studentEmail.replace(/"/g,'&quot;')}"
+      oninput="state.studentEmail=this.value;">
     <button class="primary" id="startBtn" ${state.studentName.trim()?'':'disabled'} onclick="startReading()">${t('startTest')}</button>
   </div>`;
 }
@@ -986,7 +999,7 @@ function renderQuestion(){
       <span>${opt}</span>
     </div>`).join('') + `
     <div class="option option-idk ${state.selected===idkIndex?'selected':''}" onclick="selectOption(${idkIndex})">
-      <span class="letter">–</span>
+      <span class="letter">?</span>
       <span>${t('idontknow')}</span>
     </div>`;
 
@@ -1104,6 +1117,9 @@ function buildResultsSummary(){
   const rMax = state.rAnswered*READING_POINTS;
   const lMax = state.lAnswered*LISTENING_POINTS;
   const lines = [
+    `${t('yourNameLabel')}: ${state.studentName.trim() || '—'}`,
+    `${t('yourEmailLabel')}: ${state.studentEmail.trim() || '—'}`,
+    '',
     `${t('suggestedPlacement')}: ${lvlText.name} (${lvl.code})`,
     '',
     `${t('readingLabel')}: ${state.rScore} / ${rMax} ${t('ptsUnit')}`,
