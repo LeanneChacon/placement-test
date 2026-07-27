@@ -222,8 +222,16 @@
   }
   .play-btn:hover{background:var(--teal-dark); transform:scale(1.04);}
   .play-btn.playing{background:var(--sage);}
+  .play-btn:disabled{background:#C7CDCB;cursor:not-allowed;box-shadow:none;transform:none;}
   .listen-copy{font-size:13.5px;color:var(--text-soft);line-height:1.5;}
   .listen-copy b{color:var(--text);}
+  .plays-left{
+    font-size:12px;
+    font-weight:700;
+    color:var(--teal-dark);
+    margin-top:6px;
+  }
+  .plays-left.depleted{color:var(--brick);}
   .audio-note{
     font-size:12px;
     color:var(--brick);
@@ -561,7 +569,7 @@ const translations = {
     begin:"Begin", startListeningSection:"Start listening section",
     readingLabel:"Reading", listeningLabel:"Listening",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
-    pressPlayBold:"Press play", pressPlayRest:"to hear the recording. You can replay it if you need to.",
+    pressPlayBold:"Press play", pressPlayRest:"to hear the recording.", playsLeftLabel:"{n} plays left",
     listenPrompt:"Listen, then choose the best response.",
     submitAnswer:"Submit answer", next:"Next",
     audioErrorPrefix:"Couldn't load", audioErrorSuffix:"Check the file exists and is named correctly.",
@@ -599,7 +607,7 @@ const translations = {
     begin:"Comenzar", startListeningSection:"Comenzar sección de comprensión auditiva",
     readingLabel:"Lectura", listeningLabel:"Comprensión auditiva",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
-    pressPlayBold:"Presiona reproducir", pressPlayRest:"para escuchar la grabación. Puedes volver a escucharla si lo necesitas.",
+    pressPlayBold:"Presiona reproducir", pressPlayRest:"para escuchar la grabación.", playsLeftLabel:"Te quedan {n} reproducciones",
     listenPrompt:"Escucha y elige la mejor respuesta.",
     submitAnswer:"Enviar respuesta", next:"Siguiente",
     audioErrorPrefix:"No se pudo cargar", audioErrorSuffix:"Verifica que el archivo exista y tenga el nombre correcto.",
@@ -637,7 +645,7 @@ const translations = {
     begin:"Commencer", startListeningSection:"Commencer la section de compréhension orale",
     readingLabel:"Lecture", listeningLabel:"Compréhension orale",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
-    pressPlayBold:"Appuyez sur lecture", pressPlayRest:"pour entendre l'enregistrement. Vous pouvez le réécouter si nécessaire.",
+    pressPlayBold:"Appuyez sur lecture", pressPlayRest:"pour entendre l'enregistrement.", playsLeftLabel:"Il vous reste {n} écoutes",
     listenPrompt:"Écoutez, puis choisissez la meilleure réponse.",
     submitAnswer:"Envoyer la réponse", next:"Suivant",
     audioErrorPrefix:"Impossible de charger", audioErrorSuffix:"Vérifiez que le fichier existe et qu'il est correctement nommé.",
@@ -675,7 +683,7 @@ const translations = {
     begin:"Começar", startListeningSection:"Começar seção de compreensão auditiva",
     readingLabel:"Leitura", listeningLabel:"Compreensão Auditiva",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
-    pressPlayBold:"Aperte reproduzir", pressPlayRest:"para ouvir a gravação. Você pode ouvir de novo se precisar.",
+    pressPlayBold:"Aperte reproduzir", pressPlayRest:"para ouvir a gravação.", playsLeftLabel:"Restam {n} reproduções",
     listenPrompt:"Ouça e escolha a melhor resposta.",
     submitAnswer:"Enviar resposta", next:"Próxima",
     audioErrorPrefix:"Não foi possível carregar", audioErrorSuffix:"Verifique se o arquivo existe e está com o nome correto.",
@@ -713,7 +721,7 @@ const translations = {
     begin:"Начать", startListeningSection:"Начать раздел аудирования",
     readingLabel:"Чтение", listeningLabel:"Аудирование",
     readingPtsShort:"2 балла", listeningPtsShort:"3 балла",
-    pressPlayBold:"Нажмите «воспроизвести»", pressPlayRest:"чтобы прослушать запись. Вы можете прослушать её снова, если нужно.",
+    pressPlayBold:"Нажмите «воспроизвести»", pressPlayRest:"чтобы прослушать запись.", playsLeftLabel:"Осталось прослушиваний: {n}",
     listenPrompt:"Прослушайте и выберите лучший ответ.",
     submitAnswer:"Отправить ответ", next:"Далее",
     audioErrorPrefix:"Не удалось загрузить", audioErrorSuffix:"Проверьте, что файл существует и правильно назван.",
@@ -751,7 +759,7 @@ const translations = {
     begin:"Почати", startListeningSection:"Почати розділ аудіювання",
     readingLabel:"Читання", listeningLabel:"Аудіювання",
     readingPtsShort:"2 бали", listeningPtsShort:"3 бали",
-    pressPlayBold:"Натисніть «відтворити»", pressPlayRest:"щоб прослухати запис. За потреби можна прослухати ще раз.",
+    pressPlayBold:"Натисніть «відтворити»", pressPlayRest:"щоб прослухати запис.", playsLeftLabel:"Залишилось прослуховувань: {n}",
     listenPrompt:"Прослухайте й оберіть найкращу відповідь.",
     submitAnswer:"Надіслати відповідь", next:"Далі",
     audioErrorPrefix:"Не вдалося завантажити", audioErrorSuffix:"Перевірте, що файл існує та правильно названий.",
@@ -789,7 +797,7 @@ const translations = {
     begin:"ابدأ", startListeningSection:"ابدأ قسم الاستماع",
     readingLabel:"القراءة", listeningLabel:"الاستماع",
     readingPtsShort:"نقطتان", listeningPtsShort:"3 نقاط",
-    pressPlayBold:"اضغط على تشغيل", pressPlayRest:"للاستماع إلى التسجيل. يمكنك إعادة الاستماع إذا احتجت لذلك.",
+    pressPlayBold:"اضغط على تشغيل", pressPlayRest:"للاستماع إلى التسجيل.", playsLeftLabel:"متبقٍ {n} من مرات الاستماع",
     listenPrompt:"استمع، ثم اختر الإجابة الأفضل.",
     submitAnswer:"إرسال الإجابة", next:"التالي",
     audioErrorPrefix:"تعذّر تحميل", audioErrorSuffix:"تأكد من وجود الملف وصحة اسمه.",
@@ -827,7 +835,7 @@ const translations = {
     begin:"开始", startListeningSection:"开始听力部分",
     readingLabel:"阅读", listeningLabel:"听力",
     readingPtsShort:"2 分", listeningPtsShort:"3 分",
-    pressPlayBold:"点击播放", pressPlayRest:"以听录音。如有需要可以重播。",
+    pressPlayBold:"点击播放", pressPlayRest:"以听录音。", playsLeftLabel:"还可播放 {n} 次",
     listenPrompt:"听录音，然后选择最佳答案。",
     submitAnswer:"提交答案", next:"下一题",
     audioErrorPrefix:"无法加载", audioErrorSuffix:"请检查文件是否存在且命名正确。",
@@ -859,6 +867,7 @@ let state = {
   selected:null,
   locked:false,
   hasPlayed:false,
+  playCount:0,
   lang:"en",
   studentName:"",
   studentEmail:""
@@ -982,10 +991,15 @@ function renderQuestion(){
 
   let mediaHtml = '';
   if(isListening){
+    const playsLeft = Math.max(0, 2 - state.playCount);
+    const limitReached = playsLeft <= 0;
     mediaHtml = `
       <div class="listen-box">
-        <button class="play-btn" id="playBtn" onclick="playAudio()">▶</button>
-        <div class="listen-copy"><b>${t('pressPlayBold')}</b> ${t('pressPlayRest')}</div>
+        <button class="play-btn" id="playBtn" onclick="playAudio()" ${limitReached?'disabled':''}>▶</button>
+        <div class="listen-copy">
+          <b>${t('pressPlayBold')}</b> ${t('pressPlayRest')}
+          <div class="plays-left ${limitReached?'depleted':''}">${t('playsLeftLabel').replace('{n}', playsLeft)}</div>
+        </div>
       </div>
       <div class="audio-note" id="audioNote"></div>`;
   } else if(q.passage){
@@ -1317,6 +1331,7 @@ function goToQuestion(){
 function startListening(){
   state.screen="listening";
   state.selected=null; state.locked=false;
+  state.playCount=0;
   renderQuestion();
 }
 
@@ -1364,6 +1379,7 @@ function advance(){
       return;
     }
     state.lIndex++;
+    state.playCount=0;
     renderQuestion();
   }
 }
@@ -1375,6 +1391,7 @@ function advance(){
 if(!window.__audioEl){ window.__audioEl = new Audio(); }
 
 function playAudio(){
+  if(state.playCount >= 2) return;
   const q = listeningQuestions[state.lIndex];
   const btn = document.getElementById('playBtn');
   const noteEl = document.getElementById('audioNote');
@@ -1393,8 +1410,24 @@ function playAudio(){
   };
 
   const playPromise = audioEl.play();
-  if(playPromise && playPromise.catch){ playPromise.catch(()=>{ audioEl.onerror(); }); }
+  if(playPromise && playPromise.catch){
+    playPromise.catch(()=>{ audioEl.onerror(); });
+  }
   state.hasPlayed = true;
+  state.playCount++;
+
+  // update the plays-left indicator and disable the button once exhausted,
+  // without re-rendering the card (which would orphan the button mid-playback)
+  const playsLeft = Math.max(0, 2 - state.playCount);
+  const label = document.querySelector('.plays-left');
+  if(label){
+    label.textContent = t('playsLeftLabel').replace('{n}', playsLeft);
+    label.classList.toggle('depleted', playsLeft<=0);
+  }
+  if(playsLeft<=0){
+    btn.disabled = true;
+    audioEl.onended = ()=>{ btn.classList.remove('playing'); btn.innerText='▶'; btn.disabled = true; };
+  }
 }
 
 /* ---------------- INIT ---------------- */
