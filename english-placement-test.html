@@ -138,6 +138,15 @@
   .rule-list li::before{
     content:"✦";color:var(--green);flex:none;font-size:12px;margin-top:2px;
   }
+  .rule-list li.rule-highlight{
+    background:rgba(23,143,175,.08);
+    border:1.4px solid rgba(23,143,175,.25);
+    border-radius:10px;
+    padding:10px 12px;
+    font-weight:700;
+    color:var(--teal-dark);
+  }
+  .rule-list li.rule-highlight::before{content:"⚠";color:var(--teal-dark);}
 
   .name-label{
     display:block;
@@ -324,11 +333,14 @@
     text-transform:uppercase;
     margin-bottom:16px;
   }
-  .result-icon{
-    width:104px;
-    height:80px;
+  .book-covers{
     display:block;
-    margin:6px 0 14px;
+    max-width:280px;
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 10px 24px -12px rgba(31,58,56,.35);
+    margin:4px 0 18px;
   }
   .level-desc{font-size:15px;line-height:1.65;color:var(--text-soft);margin-bottom:28px;}
 
@@ -554,29 +566,30 @@ const translations = {
   en: {
     langName:"English", dir:"ltr",
     placementTestTag:"Placement Test",
-    introHero:"Let's find your starting level.",
-    introLede:"This test has two parts — Reading and Listening. It adapts as you go: questions get harder, and each section ends as soon as we have a clear read on your level.",
-    ruleReading:"Reading questions are worth 2 points each.",
-    ruleListening:"Listening questions are worth 3 points each — you'll press play to hear each one.",
-    ruleStop:"A section ends after 3 incorrect answers, and moves you straight to the next part.",
-    ruleNoBack:"There's no going back once you submit an answer, so take your time.",
-    ruleTime:"Takes about 10–15 minutes. Find a quiet spot for the listening section.",
+    introHero:"Let's find your level.",
+    introLede:"This test has two parts: Reading and Listening. The questions get harder as you go.",
+    ruleReading:"Each Reading question is worth {n} points.",
+    ruleListening:"Each Listening question is worth {n} points. You will press play to listen.",
+    ruleStop:"If you get 3 answers wrong, that part ends. Then you go to the next part.",
+    ruleNoBack:"You cannot change your answer after you submit it. Take your time.",
+    ruleTime:"This test takes about 10 to 15 minutes. Find a quiet place for the Listening part.",
+    ruleDontGuess:"Do not guess. If you don't know the answer, choose \"I don't know.\"",
     startTest:"Start test",
     part1Reading:"Part 1 · Reading", part2Listening:"Part 2 · Listening",
-    readingSectionTitle:"Reading section", listeningSectionTitle:"Now for listening.",
-    readingSectionLede:"Read each short passage or sentence, then choose the best answer. Each correct answer is worth 2 points. Three incorrect answers moves you on to the listening section.",
-    listeningSectionLede:"You'll hear a short recording for each question — press the play button, then choose the best answer. Each correct answer is worth 3 points. Three incorrect answers ends the test.",
-    begin:"Begin", startListeningSection:"Start listening section",
+    readingSectionTitle:"Reading", listeningSectionTitle:"Listening",
+    readingSectionLede:"Read each sentence. Choose the best answer. Each correct answer is worth {n} points. Do not guess. If you don't know, choose \"I don't know.\"",
+    listeningSectionLede:"You will hear a short recording for each question. Press play. Then choose the best answer. Each correct answer is worth {n} points. Do not guess. If you don't know, choose \"I don't know.\"",
+    begin:"Start", startListeningSection:"Start Listening",
     readingLabel:"Reading", listeningLabel:"Listening",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
     pressPlayBold:"Press play", pressPlayRest:"to hear the recording.", playsLeftLabel:"{n} plays left",
-    listenPrompt:"Listen, then choose the best response.",
-    submitAnswer:"Submit answer", next:"Next",
+    listenPrompt:"Listen. Then choose the best answer.",
+    submitAnswer:"Submit", next:"Next",
     audioErrorPrefix:"Couldn't load", audioErrorSuffix:"Check the file exists and is named correctly.",
-    results:"Results", suggestedPlacement:"Suggested placement",
-    combinedScore:"Combined score", questionsAnswered:"Questions answered",
+    results:"Results", suggestedPlacement:"Suggested Level",
+    combinedScore:"Total Score", questionsAnswered:"Questions answered",
     ptsUnit:"pts", totalUnit:"total",
-    footnote:"Placement is based on a combined-score cut-off across both sections. A program advisor will confirm this level before your first class.",
+    footnote:"Your level is based on your score in both parts. A teacher will check this level before your first class.",
     shareHeading:"Share these results", emailResultsBtn:"Email results", copyResultsBtn:"Copy results", shareResultsBtn:"Share", copiedConfirmation:"Copied to clipboard", emailSubject:"My Placement Test Results",
     yourNameLabel:"Your name", yourNamePlaceholder:"Enter your full name", yourEmailLabel:"Your email (optional)", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"Download certificate", shareCertificateBtn:"Share certificate", certificateTitle:"Certificate of Placement", certificateIntro:"This certifies that", certificatePlacementText:"has been placed in", certificateDateLabel:"Date", idontknow:"I don't know.",
     levels:{
@@ -592,29 +605,30 @@ const translations = {
   es: {
     langName:"Español", dir:"ltr",
     placementTestTag:"Prueba de Nivel",
-    introHero:"Encontremos tu nivel inicial.",
-    introLede:"Esta prueba tiene dos partes — Lectura y Comprensión Auditiva. Se adapta a medida que avanzas: las preguntas se vuelven más difíciles, y cada sección termina en cuanto tengamos una idea clara de tu nivel.",
-    ruleReading:"Las preguntas de lectura valen 2 puntos cada una.",
-    ruleListening:"Las preguntas de comprensión auditiva valen 3 puntos cada una — presionarás reproducir para escuchar cada una.",
-    ruleStop:"Una sección termina después de 3 respuestas incorrectas, y pasas directamente a la siguiente parte.",
-    ruleNoBack:"No se puede retroceder una vez que envías una respuesta, así que tómate tu tiempo.",
-    ruleTime:"Toma entre 10 y 15 minutos. Busca un lugar tranquilo para la sección de comprensión auditiva.",
+    introHero:"Vamos a encontrar tu nivel.",
+    introLede:"Este examen tiene dos partes: Lectura y Comprensión auditiva. Las preguntas se vuelven más difíciles.",
+    ruleReading:"Cada pregunta de Lectura vale {n} puntos.",
+    ruleListening:"Cada pregunta de Comprensión auditiva vale {n} puntos. Vas a presionar reproducir para escuchar.",
+    ruleStop:"Si te equivocas 3 veces, esa parte termina. Luego pasas a la siguiente parte.",
+    ruleNoBack:"No puedes cambiar tu respuesta después de enviarla. Tómate tu tiempo.",
+    ruleTime:"Este examen toma de 10 a 15 minutos. Busca un lugar tranquilo para la parte de Comprensión auditiva.",
+    ruleDontGuess:"No adivines. Si no sabes la respuesta, elige \"No lo sé.\"",
     startTest:"Comenzar prueba",
     part1Reading:"Parte 1 · Lectura", part2Listening:"Parte 2 · Comprensión auditiva",
-    readingSectionTitle:"Sección de lectura", listeningSectionTitle:"Ahora, comprensión auditiva.",
-    readingSectionLede:"Lee cada pasaje o frase breve y elige la mejor respuesta. Cada respuesta correcta vale 2 puntos. Tres respuestas incorrectas te llevan a la sección de comprensión auditiva.",
-    listeningSectionLede:"Escucharás una grabación breve para cada pregunta — presiona el botón de reproducir y elige la mejor respuesta. Cada respuesta correcta vale 3 puntos. Tres respuestas incorrectas terminan la prueba.",
-    begin:"Comenzar", startListeningSection:"Comenzar sección de comprensión auditiva",
+    readingSectionTitle:"Lectura", listeningSectionTitle:"Comprensión auditiva",
+    readingSectionLede:"Lee cada frase. Elige la mejor respuesta. Cada respuesta correcta vale {n} puntos. No adivines. Si no sabes, elige \"No lo sé.\"",
+    listeningSectionLede:"Vas a escuchar una grabación corta para cada pregunta. Presiona reproducir. Luego elige la mejor respuesta. Cada respuesta correcta vale {n} puntos. No adivines. Si no sabes, elige \"No lo sé.\"",
+    begin:"Comenzar", startListeningSection:"Comenzar comprensión auditiva",
     readingLabel:"Lectura", listeningLabel:"Comprensión auditiva",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
     pressPlayBold:"Presiona reproducir", pressPlayRest:"para escuchar la grabación.", playsLeftLabel:"Te quedan {n} reproducciones",
-    listenPrompt:"Escucha y elige la mejor respuesta.",
-    submitAnswer:"Enviar respuesta", next:"Siguiente",
+    listenPrompt:"Escucha. Luego elige la mejor respuesta.",
+    submitAnswer:"Enviar", next:"Siguiente",
     audioErrorPrefix:"No se pudo cargar", audioErrorSuffix:"Verifica que el archivo exista y tenga el nombre correcto.",
     results:"Resultados", suggestedPlacement:"Nivel sugerido",
-    combinedScore:"Puntaje combinado", questionsAnswered:"Preguntas respondidas",
+    combinedScore:"Puntaje total", questionsAnswered:"Preguntas respondidas",
     ptsUnit:"pts", totalUnit:"total",
-    footnote:"La ubicación de nivel se basa en un puntaje combinado de ambas secciones. Un asesor del programa confirmará este nivel antes de tu primera clase.",
+    footnote:"Tu nivel se basa en tu puntaje en las dos partes. Un maestro revisará este nivel antes de tu primera clase.",
     shareHeading:"Comparte estos resultados", emailResultsBtn:"Enviar por correo", copyResultsBtn:"Copiar resultados", shareResultsBtn:"Compartir", copiedConfirmation:"Copiado al portapapeles", emailSubject:"Mis resultados del examen de nivelación",
     yourNameLabel:"Tu nombre", yourNamePlaceholder:"Escribe tu nombre completo", yourEmailLabel:"Tu correo electrónico (opcional)", yourEmailPlaceholder:"tucorreo@ejemplo.com", downloadCertificateBtn:"Descargar certificado", shareCertificateBtn:"Compartir certificado", certificateTitle:"Certificado de Nivelación", certificateIntro:"Esto certifica que", certificatePlacementText:"ha sido ubicado/a en", certificateDateLabel:"Fecha", idontknow:"No lo sé.",
     levels:{
@@ -630,29 +644,30 @@ const translations = {
   fr: {
     langName:"Français", dir:"ltr",
     placementTestTag:"Test de Niveau",
-    introHero:"Déterminons votre niveau de départ.",
-    introLede:"Ce test comporte deux parties — Lecture et Compréhension orale. Il s'adapte au fur et à mesure : les questions deviennent plus difficiles, et chaque section se termine dès que nous avons une idée claire de votre niveau.",
-    ruleReading:"Les questions de lecture valent 2 points chacune.",
-    ruleListening:"Les questions de compréhension orale valent 3 points chacune — vous appuierez sur lecture pour entendre chacune d'elles.",
-    ruleStop:"Une section se termine après 3 réponses incorrectes, et vous passez directement à la partie suivante.",
-    ruleNoBack:"Il n'est pas possible de revenir en arrière une fois une réponse envoyée, alors prenez votre temps.",
-    ruleTime:"Compte environ 10 à 15 minutes. Trouvez un endroit calme pour la section de compréhension orale.",
+    introHero:"Trouvons votre niveau.",
+    introLede:"Ce test a deux parties : Lecture et Écoute. Les questions deviennent plus difficiles.",
+    ruleReading:"Chaque question de Lecture vaut {n} points.",
+    ruleListening:"Chaque question d'Écoute vaut {n} points. Vous appuierez sur lecture pour écouter.",
+    ruleStop:"Si vous avez 3 réponses fausses, cette partie se termine. Puis vous passez à la partie suivante.",
+    ruleNoBack:"Vous ne pouvez pas changer votre réponse après l'avoir envoyée. Prenez votre temps.",
+    ruleTime:"Ce test dure environ 10 à 15 minutes. Trouvez un endroit calme pour la partie Écoute.",
+    ruleDontGuess:"Ne devinez pas. Si vous ne savez pas, choisissez « Je ne sais pas. »",
     startTest:"Commencer le test",
     part1Reading:"Partie 1 · Lecture", part2Listening:"Partie 2 · Compréhension orale",
-    readingSectionTitle:"Section lecture", listeningSectionTitle:"Passons à la compréhension orale.",
-    readingSectionLede:"Lisez chaque court passage ou phrase, puis choisissez la meilleure réponse. Chaque bonne réponse vaut 2 points. Trois réponses incorrectes vous font passer à la section de compréhension orale.",
-    listeningSectionLede:"Vous entendrez un court enregistrement pour chaque question — appuyez sur le bouton de lecture, puis choisissez la meilleure réponse. Chaque bonne réponse vaut 3 points. Trois réponses incorrectes terminent le test.",
-    begin:"Commencer", startListeningSection:"Commencer la section de compréhension orale",
+    readingSectionTitle:"Lecture", listeningSectionTitle:"Écoute",
+    readingSectionLede:"Lisez chaque phrase. Choisissez la meilleure réponse. Chaque bonne réponse vaut {n} points. Ne devinez pas. Si vous ne savez pas, choisissez « Je ne sais pas. »",
+    listeningSectionLede:"Vous allez entendre un court enregistrement pour chaque question. Appuyez sur lecture. Puis choisissez la meilleure réponse. Chaque bonne réponse vaut {n} points. Ne devinez pas. Si vous ne savez pas, choisissez « Je ne sais pas. »",
+    begin:"Commencer", startListeningSection:"Commencer l'écoute",
     readingLabel:"Lecture", listeningLabel:"Compréhension orale",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
     pressPlayBold:"Appuyez sur lecture", pressPlayRest:"pour entendre l'enregistrement.", playsLeftLabel:"Il vous reste {n} écoutes",
-    listenPrompt:"Écoutez, puis choisissez la meilleure réponse.",
-    submitAnswer:"Envoyer la réponse", next:"Suivant",
+    listenPrompt:"Écoutez. Puis choisissez la meilleure réponse.",
+    submitAnswer:"Valider", next:"Suivant",
     audioErrorPrefix:"Impossible de charger", audioErrorSuffix:"Vérifiez que le fichier existe et qu'il est correctement nommé.",
     results:"Résultats", suggestedPlacement:"Niveau suggéré",
-    combinedScore:"Score combiné", questionsAnswered:"Questions répondues",
+    combinedScore:"Score total", questionsAnswered:"Questions répondues",
     ptsUnit:"pts", totalUnit:"total",
-    footnote:"Le niveau est basé sur un seuil de score combiné des deux sections. Un conseiller du programme confirmera ce niveau avant votre premier cours.",
+    footnote:"Votre niveau est basé sur votre score dans les deux parties. Un enseignant vérifiera ce niveau avant votre premier cours.",
     shareHeading:"Partagez ces résultats", emailResultsBtn:"Envoyer par e-mail", copyResultsBtn:"Copier les résultats", shareResultsBtn:"Partager", copiedConfirmation:"Copié dans le presse-papiers", emailSubject:"Mes résultats du test de niveau",
     yourNameLabel:"Votre nom", yourNamePlaceholder:"Entrez votre nom complet", yourEmailLabel:"Votre e-mail (facultatif)", yourEmailPlaceholder:"vous@exemple.com", downloadCertificateBtn:"Télécharger le certificat", shareCertificateBtn:"Partager le certificat", certificateTitle:"Certificat de Niveau", certificateIntro:"Ceci certifie que", certificatePlacementText:"a été placé(e) au", certificateDateLabel:"Date", idontknow:"Je ne sais pas.",
     levels:{
@@ -668,29 +683,30 @@ const translations = {
   pt: {
     langName:"Português", dir:"ltr",
     placementTestTag:"Teste de Nivelamento",
-    introHero:"Vamos encontrar seu nível inicial.",
-    introLede:"Este teste tem duas partes — Leitura e Compreensão Auditiva. Ele se adapta conforme você avança: as perguntas ficam mais difíceis, e cada seção termina assim que tivermos uma ideia clara do seu nível.",
-    ruleReading:"As perguntas de leitura valem 2 pontos cada.",
-    ruleListening:"As perguntas de compreensão auditiva valem 3 pontos cada — você vai apertar o botão de reproduzir para ouvir cada uma.",
-    ruleStop:"Uma seção termina após 3 respostas incorretas, e você passa direto para a próxima parte.",
-    ruleNoBack:"Não é possível voltar depois de enviar uma resposta, então não tenha pressa.",
-    ruleTime:"Leva de 10 a 15 minutos. Procure um lugar tranquilo para a seção de compreensão auditiva.",
+    introHero:"Vamos encontrar seu nível.",
+    introLede:"Este teste tem duas partes: Leitura e Compreensão auditiva. As perguntas ficam mais difíceis.",
+    ruleReading:"Cada pergunta de Leitura vale {n} pontos.",
+    ruleListening:"Cada pergunta de Compreensão auditiva vale {n} pontos. Você vai apertar o play para ouvir.",
+    ruleStop:"Se você errar 3 vezes, essa parte termina. Depois você vai para a próxima parte.",
+    ruleNoBack:"Você não pode mudar sua resposta depois de enviá-la. Não tenha pressa.",
+    ruleTime:"Este teste leva de 10 a 15 minutos. Procure um lugar tranquilo para a parte de Compreensão auditiva.",
+    ruleDontGuess:"Não chute. Se você não souber a resposta, escolha \"Não sei.\"",
     startTest:"Começar teste",
     part1Reading:"Parte 1 · Leitura", part2Listening:"Parte 2 · Compreensão Auditiva",
-    readingSectionTitle:"Seção de leitura", listeningSectionTitle:"Agora, compreensão auditiva.",
-    readingSectionLede:"Leia cada trecho ou frase curta e escolha a melhor resposta. Cada resposta correta vale 2 pontos. Três respostas incorretas levam você à seção de compreensão auditiva.",
-    listeningSectionLede:"Você vai ouvir uma gravação curta para cada pergunta — aperte o botão de reproduzir e escolha a melhor resposta. Cada resposta correta vale 3 pontos. Três respostas incorretas encerram o teste.",
-    begin:"Começar", startListeningSection:"Começar seção de compreensão auditiva",
+    readingSectionTitle:"Leitura", listeningSectionTitle:"Compreensão auditiva",
+    readingSectionLede:"Leia cada frase. Escolha a melhor resposta. Cada resposta correta vale {n} pontos. Não chute. Se você não souber, escolha \"Não sei.\"",
+    listeningSectionLede:"Você vai ouvir uma gravação curta para cada pergunta. Aperte o play. Depois escolha a melhor resposta. Cada resposta correta vale {n} pontos. Não chute. Se você não souber, escolha \"Não sei.\"",
+    begin:"Começar", startListeningSection:"Começar compreensão auditiva",
     readingLabel:"Leitura", listeningLabel:"Compreensão Auditiva",
     readingPtsShort:"2 pts", listeningPtsShort:"3 pts",
     pressPlayBold:"Aperte reproduzir", pressPlayRest:"para ouvir a gravação.", playsLeftLabel:"Restam {n} reproduções",
-    listenPrompt:"Ouça e escolha a melhor resposta.",
-    submitAnswer:"Enviar resposta", next:"Próxima",
+    listenPrompt:"Ouça. Depois escolha a melhor resposta.",
+    submitAnswer:"Enviar", next:"Próxima",
     audioErrorPrefix:"Não foi possível carregar", audioErrorSuffix:"Verifique se o arquivo existe e está com o nome correto.",
     results:"Resultados", suggestedPlacement:"Nível sugerido",
-    combinedScore:"Pontuação combinada", questionsAnswered:"Perguntas respondidas",
+    combinedScore:"Pontuação total", questionsAnswered:"Perguntas respondidas",
     ptsUnit:"pts", totalUnit:"total",
-    footnote:"O nível é definido com base na pontuação combinada das duas seções. Um orientador do programa confirmará este nível antes da sua primeira aula.",
+    footnote:"Seu nível é baseado na sua pontuação nas duas partes. Um professor vai confirmar esse nível antes da sua primeira aula.",
     shareHeading:"Compartilhe estes resultados", emailResultsBtn:"Enviar por e-mail", copyResultsBtn:"Copiar resultados", shareResultsBtn:"Compartilhar", copiedConfirmation:"Copiado para a área de transferência", emailSubject:"Meus resultados do teste de nivelamento",
     yourNameLabel:"Seu nome", yourNamePlaceholder:"Digite seu nome completo", yourEmailLabel:"Seu e-mail (opcional)", yourEmailPlaceholder:"voce@exemplo.com", downloadCertificateBtn:"Baixar certificado", shareCertificateBtn:"Compartilhar certificado", certificateTitle:"Certificado de Nivelamento", certificateIntro:"Isto certifica que", certificatePlacementText:"foi classificado(a) no", certificateDateLabel:"Data", idontknow:"Não sei.",
     levels:{
@@ -706,29 +722,30 @@ const translations = {
   ru: {
     langName:"Русский", dir:"ltr",
     placementTestTag:"Тест на определение уровня",
-    introHero:"Давайте определим ваш начальный уровень.",
-    introLede:"Тест состоит из двух частей — Чтение и Аудирование. Он адаптируется по мере прохождения: вопросы становятся сложнее, и каждая часть завершается, как только становится ясен ваш уровень.",
-    ruleReading:"Вопросы по чтению — 2 балла за каждый.",
-    ruleListening:"Вопросы по аудированию — 3 балла за каждый; вы будете нажимать «воспроизвести», чтобы прослушать каждый вопрос.",
-    ruleStop:"Часть завершается после 3 неверных ответов, и вы сразу переходите к следующей части.",
-    ruleNoBack:"Вернуться назад после отправки ответа нельзя, поэтому не спешите.",
-    ruleTime:"Занимает примерно 10–15 минут. Для части с аудированием найдите тихое место.",
+    introHero:"Определим ваш уровень.",
+    introLede:"Тест состоит из двух частей: Чтение и Аудирование. Вопросы становятся сложнее.",
+    ruleReading:"Каждый вопрос по чтению стоит {n} балла.",
+    ruleListening:"Каждый вопрос по аудированию стоит {n} балла. Вы будете нажимать «Воспроизвести», чтобы слушать.",
+    ruleStop:"Если вы ответите неправильно 3 раза, эта часть закончится. Потом вы перейдёте к следующей части.",
+    ruleNoBack:"Вы не можете изменить ответ после отправки. Не торопитесь.",
+    ruleTime:"Тест занимает 10–15 минут. Найдите тихое место для части с аудированием.",
+    ruleDontGuess:"Не угадывайте. Если вы не знаете ответ, выберите «Я не знаю.»",
     startTest:"Начать тест",
     part1Reading:"Часть 1 · Чтение", part2Listening:"Часть 2 · Аудирование",
-    readingSectionTitle:"Раздел чтения", listeningSectionTitle:"Переходим к аудированию.",
-    readingSectionLede:"Прочитайте каждый короткий отрывок или предложение и выберите лучший ответ. Каждый правильный ответ — 2 балла. После трёх неверных ответов вы перейдёте к разделу аудирования.",
-    listeningSectionLede:"Для каждого вопроса вы услышите короткую запись — нажмите кнопку воспроизведения и выберите лучший ответ. Каждый правильный ответ — 3 балла. После трёх неверных ответов тест завершится.",
-    begin:"Начать", startListeningSection:"Начать раздел аудирования",
+    readingSectionTitle:"Чтение", listeningSectionTitle:"Аудирование",
+    readingSectionLede:"Прочитайте каждое предложение. Выберите лучший ответ. Каждый правильный ответ стоит {n} балла. Не угадывайте. Если не знаете, выберите «Я не знаю.»",
+    listeningSectionLede:"Вы услышите короткую запись к каждому вопросу. Нажмите «Воспроизвести». Потом выберите лучший ответ. Каждый правильный ответ стоит {n} балла. Не угадывайте. Если не знаете, выберите «Я не знаю.»",
+    begin:"Начать", startListeningSection:"Начать аудирование",
     readingLabel:"Чтение", listeningLabel:"Аудирование",
     readingPtsShort:"2 балла", listeningPtsShort:"3 балла",
     pressPlayBold:"Нажмите «воспроизвести»", pressPlayRest:"чтобы прослушать запись.", playsLeftLabel:"Осталось прослушиваний: {n}",
-    listenPrompt:"Прослушайте и выберите лучший ответ.",
-    submitAnswer:"Отправить ответ", next:"Далее",
+    listenPrompt:"Слушайте. Потом выберите лучший ответ.",
+    submitAnswer:"Отправить", next:"Далее",
     audioErrorPrefix:"Не удалось загрузить", audioErrorSuffix:"Проверьте, что файл существует и правильно назван.",
     results:"Результаты", suggestedPlacement:"Рекомендуемый уровень",
-    combinedScore:"Суммарный балл", questionsAnswered:"Отвечено вопросов",
+    combinedScore:"Общий балл", questionsAnswered:"Отвечено вопросов",
     ptsUnit:"баллов", totalUnit:"всего",
-    footnote:"Уровень определяется по суммарному баллу за обе части. Куратор программы подтвердит этот уровень перед вашим первым занятием.",
+    footnote:"Ваш уровень основан на баллах за обе части. Куратор проверит этот уровень перед первым занятием.",
     shareHeading:"Поделитесь результатами", emailResultsBtn:"Отправить по эл. почте", copyResultsBtn:"Скопировать результаты", shareResultsBtn:"Поделиться", copiedConfirmation:"Скопировано в буфер обмена", emailSubject:"Мои результаты теста на определение уровня",
     yourNameLabel:"Ваше имя", yourNamePlaceholder:"Введите полное имя", yourEmailLabel:"Ваш email (необязательно)", yourEmailPlaceholder:"vy@example.com", downloadCertificateBtn:"Скачать сертификат", shareCertificateBtn:"Поделиться сертификатом", certificateTitle:"Сертификат об уровне", certificateIntro:"Настоящим подтверждается, что", certificatePlacementText:"определён(а) на уровень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
     levels:{
@@ -744,29 +761,30 @@ const translations = {
   uk: {
     langName:"Українська", dir:"ltr",
     placementTestTag:"Тест на визначення рівня",
-    introHero:"Визначимо ваш початковий рівень.",
-    introLede:"Тест складається з двох частин — Читання та Аудіювання. Він адаптується під час проходження: питання стають складнішими, і кожна частина завершується, щойно стає зрозумілим ваш рівень.",
-    ruleReading:"Питання з читання — 2 бали за кожне.",
-    ruleListening:"Питання з аудіювання — 3 бали за кожне; ви натискатимете «відтворити», щоб прослухати кожне питання.",
-    ruleStop:"Частина завершується після 3 неправильних відповідей, і ви одразу переходите до наступної частини.",
-    ruleNoBack:"Повернутися назад після надсилання відповіді неможливо, тож не поспішайте.",
-    ruleTime:"Триває приблизно 10–15 хвилин. Для частини з аудіюванням знайдіть тихе місце.",
+    introHero:"Визначимо ваш рівень.",
+    introLede:"Тест складається з двох частин: Читання та Аудіювання. Питання стають складнішими.",
+    ruleReading:"Кожне питання з читання коштує {n} бали.",
+    ruleListening:"Кожне питання з аудіювання коштує {n} бали. Ви будете натискати «Відтворити», щоб слухати.",
+    ruleStop:"Якщо ви відповісте неправильно 3 рази, ця частина закінчиться. Потім ви перейдете до наступної частини.",
+    ruleNoBack:"Ви не можете змінити відповідь після надсилання. Не поспішайте.",
+    ruleTime:"Тест триває 10–15 хвилин. Знайдіть тихе місце для частини з аудіюванням.",
+    ruleDontGuess:"Не вгадуйте. Якщо ви не знаєте відповідь, оберіть «Я не знаю.»",
     startTest:"Почати тест",
     part1Reading:"Частина 1 · Читання", part2Listening:"Частина 2 · Аудіювання",
-    readingSectionTitle:"Розділ читання", listeningSectionTitle:"Переходимо до аудіювання.",
-    readingSectionLede:"Прочитайте кожен короткий уривок або речення й оберіть найкращу відповідь. Кожна правильна відповідь — 2 бали. Після трьох неправильних відповідей ви перейдете до розділу аудіювання.",
-    listeningSectionLede:"Для кожного питання ви почуєте короткий запис — натисніть кнопку відтворення й оберіть найкращу відповідь. Кожна правильна відповідь — 3 бали. Після трьох неправильних відповідей тест завершиться.",
-    begin:"Почати", startListeningSection:"Почати розділ аудіювання",
+    readingSectionTitle:"Читання", listeningSectionTitle:"Аудіювання",
+    readingSectionLede:"Прочитайте кожне речення. Оберіть найкращу відповідь. Кожна правильна відповідь коштує {n} бали. Не вгадуйте. Якщо не знаєте, оберіть «Я не знаю.»",
+    listeningSectionLede:"Ви почуєте короткий запис до кожного питання. Натисніть «Відтворити». Потім оберіть найкращу відповідь. Кожна правильна відповідь коштує {n} бали. Не вгадуйте. Якщо не знаєте, оберіть «Я не знаю.»",
+    begin:"Почати", startListeningSection:"Почати аудіювання",
     readingLabel:"Читання", listeningLabel:"Аудіювання",
     readingPtsShort:"2 бали", listeningPtsShort:"3 бали",
     pressPlayBold:"Натисніть «відтворити»", pressPlayRest:"щоб прослухати запис.", playsLeftLabel:"Залишилось прослуховувань: {n}",
-    listenPrompt:"Прослухайте й оберіть найкращу відповідь.",
-    submitAnswer:"Надіслати відповідь", next:"Далі",
+    listenPrompt:"Слухайте. Потім оберіть найкращу відповідь.",
+    submitAnswer:"Надіслати", next:"Далі",
     audioErrorPrefix:"Не вдалося завантажити", audioErrorSuffix:"Перевірте, що файл існує та правильно названий.",
     results:"Результати", suggestedPlacement:"Рекомендований рівень",
-    combinedScore:"Сумарний бал", questionsAnswered:"Опрацьовано питань",
+    combinedScore:"Загальний бал", questionsAnswered:"Опрацьовано питань",
     ptsUnit:"балів", totalUnit:"усього",
-    footnote:"Рівень визначається за сумарним балом обох частин. Куратор програми підтвердить цей рівень перед вашим першим заняттям.",
+    footnote:"Ваш рівень базується на балах за обидві частини. Куратор перевірить цей рівень перед вашим першим заняттям.",
     shareHeading:"Поділіться результатами", emailResultsBtn:"Надіслати електронною поштою", copyResultsBtn:"Скопіювати результати", shareResultsBtn:"Поділитися", copiedConfirmation:"Скопійовано в буфер обміну", emailSubject:"Мої результати тесту на визначення рівня",
     yourNameLabel:"Ваше ім'я", yourNamePlaceholder:"Введіть повне ім'я", yourEmailLabel:"Ваш email (необов'язково)", yourEmailPlaceholder:"vy@example.com", downloadCertificateBtn:"Завантажити сертифікат", shareCertificateBtn:"Поділитися сертифікатом", certificateTitle:"Сертифікат про рівень", certificateIntro:"Цим підтверджується, що", certificatePlacementText:"визначено на рівень", certificateDateLabel:"Дата", idontknow:"Я не знаю.",
     levels:{
@@ -782,29 +800,30 @@ const translations = {
   ar: {
     langName:"العربية", dir:"rtl",
     placementTestTag:"اختبار تحديد المستوى",
-    introHero:"لنحدّد مستواك المبدئي.",
-    introLede:"يتكوّن هذا الاختبار من قسمين — القراءة والاستماع. يتكيّف الاختبار أثناء تقدّمك: تصبح الأسئلة أصعب، وينتهي كل قسم بمجرد أن نكوّن فكرة واضحة عن مستواك.",
-    ruleReading:"قيمة كل سؤال قراءة نقطتان.",
-    ruleListening:"قيمة كل سؤال استماع 3 نقاط — ستضغط على زر التشغيل للاستماع إلى كل سؤال.",
-    ruleStop:"ينتهي القسم بعد 3 إجابات خاطئة، وتنتقل مباشرة إلى الجزء التالي.",
-    ruleNoBack:"لا يمكن الرجوع بعد إرسال الإجابة، لذا خذ وقتك.",
-    ruleTime:"يستغرق حوالي 10 إلى 15 دقيقة. اختر مكانًا هادئًا لقسم الاستماع.",
+    introHero:"لنحدد مستواك.",
+    introLede:"يتكوّن هذا الاختبار من قسمين: القراءة والاستماع. تصبح الأسئلة أصعب مع التقدم.",
+    ruleReading:"كل سؤال في القراءة يساوي {n} نقطة.",
+    ruleListening:"كل سؤال في الاستماع يساوي {n} نقطة. ستضغط على زر التشغيل للاستماع.",
+    ruleStop:"إذا أخطأت 3 مرات، ينتهي هذا الجزء. ثم تنتقل إلى الجزء التالي.",
+    ruleNoBack:"لا يمكنك تغيير إجابتك بعد إرسالها. خذ وقتك.",
+    ruleTime:"يستغرق هذا الاختبار من 10 إلى 15 دقيقة. ابحث عن مكان هادئ لجزء الاستماع.",
+    ruleDontGuess:"لا تخمّن. إذا كنت لا تعرف الإجابة، اختر \"لا أعرف.\"",
     startTest:"ابدأ الاختبار",
     part1Reading:"الجزء 1 · القراءة", part2Listening:"الجزء 2 · الاستماع",
-    readingSectionTitle:"قسم القراءة", listeningSectionTitle:"الآن ننتقل إلى الاستماع.",
-    readingSectionLede:"اقرأ كل مقطع أو جملة قصيرة، ثم اختر الإجابة الأفضل. قيمة كل إجابة صحيحة نقطتان. بعد 3 إجابات خاطئة تنتقل إلى قسم الاستماع.",
-    listeningSectionLede:"ستستمع إلى تسجيل قصير لكل سؤال — اضغط على زر التشغيل ثم اختر الإجابة الأفضل. قيمة كل إجابة صحيحة 3 نقاط. بعد 3 إجابات خاطئة ينتهي الاختبار.",
-    begin:"ابدأ", startListeningSection:"ابدأ قسم الاستماع",
+    readingSectionTitle:"القراءة", listeningSectionTitle:"الاستماع",
+    readingSectionLede:"اقرأ كل جملة. اختر الإجابة الأفضل. كل إجابة صحيحة تساوي {n} نقطة. لا تخمّن. إذا كنت لا تعرف، اختر \"لا أعرف.\"",
+    listeningSectionLede:"ستسمع تسجيلًا قصيرًا لكل سؤال. اضغط على تشغيل. ثم اختر الإجابة الأفضل. كل إجابة صحيحة تساوي {n} نقطة. لا تخمّن. إذا كنت لا تعرف، اختر \"لا أعرف.\"",
+    begin:"ابدأ", startListeningSection:"ابدأ الاستماع",
     readingLabel:"القراءة", listeningLabel:"الاستماع",
     readingPtsShort:"نقطتان", listeningPtsShort:"3 نقاط",
     pressPlayBold:"اضغط على تشغيل", pressPlayRest:"للاستماع إلى التسجيل.", playsLeftLabel:"متبقٍ {n} من مرات الاستماع",
-    listenPrompt:"استمع، ثم اختر الإجابة الأفضل.",
-    submitAnswer:"إرسال الإجابة", next:"التالي",
+    listenPrompt:"استمع. ثم اختر الإجابة الأفضل.",
+    submitAnswer:"إرسال", next:"التالي",
     audioErrorPrefix:"تعذّر تحميل", audioErrorSuffix:"تأكد من وجود الملف وصحة اسمه.",
     results:"النتائج", suggestedPlacement:"المستوى المقترح",
-    combinedScore:"النتيجة الإجمالية", questionsAnswered:"الأسئلة المُجابة",
+    combinedScore:"الدرجة الإجمالية", questionsAnswered:"الأسئلة المُجابة",
     ptsUnit:"نقاط", totalUnit:"الإجمالي",
-    footnote:"يُحدَّد المستوى بناءً على النتيجة الإجمالية لكلا القسمين. سيؤكد أحد مستشاري البرنامج هذا المستوى قبل أول حصة لك.",
+    footnote:"يعتمد مستواك على درجاتك في كلا الجزأين. سيتحقق المعلم من هذا المستوى قبل أول حصة لك.",
     shareHeading:"شارك هذه النتائج", emailResultsBtn:"إرسال بالبريد الإلكتروني", copyResultsBtn:"نسخ النتائج", shareResultsBtn:"مشاركة", copiedConfirmation:"تم النسخ إلى الحافظة", emailSubject:"نتائج اختبار تحديد المستوى الخاص بي",
     yourNameLabel:"اسمك", yourNamePlaceholder:"أدخل اسمك الكامل", yourEmailLabel:"بريدك الإلكتروني (اختياري)", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"تنزيل الشهادة", shareCertificateBtn:"مشاركة الشهادة", certificateTitle:"شهادة تحديد المستوى", certificateIntro:"تشهد هذه الوثيقة بأن", certificatePlacementText:"قد تم تصنيفه/تصنيفها في", certificateDateLabel:"التاريخ", idontknow:"لا أعرف.",
     levels:{
@@ -820,29 +839,30 @@ const translations = {
   zh: {
     langName:"中文", dir:"ltr",
     placementTestTag:"分级测试",
-    introHero:"让我们来确定你的起始水平。",
-    introLede:"本测试分为两部分——阅读和听力。测试会根据你的表现自动调整难度：题目会逐渐变难，一旦能清楚判断你的水平，该部分就会结束。",
-    ruleReading:"每道阅读题 2 分。",
-    ruleListening:"每道听力题 3 分——你需要点击播放按钮来听每道题。",
-    ruleStop:"每部分在答错 3 题后结束，并直接进入下一部分。",
-    ruleNoBack:"提交答案后无法返回修改，请仔细作答。",
-    ruleTime:"大约需要 10 到 15 分钟。请为听力部分找一个安静的地方。",
+    introHero:"让我们来确定你的水平。",
+    introLede:"本测试有两部分：阅读和听力。题目会越来越难。",
+    ruleReading:"每道阅读题 {n} 分。",
+    ruleListening:"每道听力题 {n} 分。你需要点击播放来听。",
+    ruleStop:"如果你答错 3 题，这部分就结束，然后进入下一部分。",
+    ruleNoBack:"提交答案后不能修改，请仔细作答。",
+    ruleTime:"这个测试大约需要 10 到 15 分钟。请为听力部分找一个安静的地方。",
+    ruleDontGuess:"不要猜。如果你不知道答案，请选择“我不知道。”",
     startTest:"开始测试",
     part1Reading:"第一部分 · 阅读", part2Listening:"第二部分 · 听力",
-    readingSectionTitle:"阅读部分", listeningSectionTitle:"现在进入听力部分。",
-    readingSectionLede:"阅读每段短文或句子，然后选择最佳答案。每答对一题得 2 分。答错 3 题后将进入听力部分。",
-    listeningSectionLede:"每道题你都会听到一段简短录音——点击播放按钮，然后选择最佳答案。每答对一题得 3 分。答错 3 题测试将结束。",
-    begin:"开始", startListeningSection:"开始听力部分",
+    readingSectionTitle:"阅读", listeningSectionTitle:"听力",
+    readingSectionLede:"阅读每个句子。选择最佳答案。每答对一题得 {n} 分。不要猜。如果不知道，请选择“我不知道。”",
+    listeningSectionLede:"每道题你会听到一段简短录音。点击播放。然后选择最佳答案。每答对一题得 {n} 分。不要猜。如果不知道，请选择“我不知道。”",
+    begin:"开始", startListeningSection:"开始听力",
     readingLabel:"阅读", listeningLabel:"听力",
     readingPtsShort:"2 分", listeningPtsShort:"3 分",
     pressPlayBold:"点击播放", pressPlayRest:"以听录音。", playsLeftLabel:"还可播放 {n} 次",
-    listenPrompt:"听录音，然后选择最佳答案。",
-    submitAnswer:"提交答案", next:"下一题",
+    listenPrompt:"听录音。然后选择最佳答案。",
+    submitAnswer:"提交", next:"下一题",
     audioErrorPrefix:"无法加载", audioErrorSuffix:"请检查文件是否存在且命名正确。",
-    results:"测试结果", suggestedPlacement:"建议分级",
+    results:"测试结果", suggestedPlacement:"建议级别",
     combinedScore:"总分", questionsAnswered:"已答题数",
     ptsUnit:"分", totalUnit:"总计",
-    footnote:"分级结果基于两部分的综合得分。项目顾问会在你第一节课前确认此分级。",
+    footnote:"你的级别根据两部分的总分确定。老师会在你第一节课前确认这个级别。",
     shareHeading:"分享结果", emailResultsBtn:"通过邮件发送", copyResultsBtn:"复制结果", shareResultsBtn:"分享", copiedConfirmation:"已复制到剪贴板", emailSubject:"我的分级测试结果",
     yourNameLabel:"你的姓名", yourNamePlaceholder:"请输入你的全名", yourEmailLabel:"你的邮箱（选填）", yourEmailPlaceholder:"you@example.com", downloadCertificateBtn:"下载证书", shareCertificateBtn:"分享证书", certificateTitle:"分级证书", certificateIntro:"兹证明", certificatePlacementText:"已被评定为", certificateDateLabel:"日期", idontknow:"我不知道。",
     levels:{
@@ -943,6 +963,7 @@ function renderIntro(){
   <div class="card fade-in">
     <span class="section-tag">${t('placementTestTag')}</span>
     <h1 class="hero">${t('introHero')}</h1>
+    <img class="book-covers" src="confidence-connections-books.jpg" alt="Confidence and Connections book series">
     <p class="lede">${t('introLede')}</p>
     <ul class="rule-list">
       <li>${t('ruleReading')}</li>
@@ -950,6 +971,7 @@ function renderIntro(){
       <li>${t('ruleStop')}</li>
       <li>${t('ruleNoBack')}</li>
       <li>${t('ruleTime')}</li>
+      <li class="rule-highlight">${t('ruleDontGuess')}</li>
     </ul>
     <label class="name-label" for="studentNameInput">${t('yourNameLabel')}</label>
     <input type="text" id="studentNameInput" class="name-input" placeholder="${t('yourNamePlaceholder')}"
@@ -1052,24 +1074,7 @@ function renderResults(){
   root.innerHTML = `
   <div class="card fade-in">
     <span class="section-tag">${t('results')}</span>
-    <svg class="result-icon" viewBox="0 0 130 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <ellipse cx="65" cy="90" rx="48" ry="6" fill="#1F3A38" opacity="0.08"/>
-      <g transform="rotate(-4 65 60)">
-        <rect x="16" y="66" width="98" height="16" rx="4" fill="#71A943"/>
-        <rect x="16" y="66" width="98" height="5" rx="2.5" fill="#567F32"/>
-      </g>
-      <g transform="rotate(3 65 48)">
-        <rect x="24" y="46" width="82" height="16" rx="4" fill="#178FAF"/>
-        <rect x="24" y="46" width="82" height="5" rx="2.5" fill="#106C85"/>
-      </g>
-      <g transform="rotate(-2 65 30)">
-        <rect x="30" y="26" width="70" height="16" rx="4" fill="#4E9A88"/>
-        <line x1="65" y1="26" x2="65" y2="42" stroke="#37725F" stroke-width="1.4"/>
-      </g>
-      <g transform="translate(78 8) rotate(18)">
-        <path d="M0 14 C0 4, 10 -2, 18 2 C20 -4, 30 -2, 30 8 C30 16, 20 20, 15 24 C10 20, 0 20, 0 14Z" fill="#71A943" opacity="0.9"/>
-      </g>
-    </svg>
+    <img class="book-covers" src="confidence-connections-books.jpg" alt="Confidence and Connections book series">
     <div class="level-code">${lvl.code} · ${t('suggestedPlacement')}</div>
     <div class="level-name">${lvlText.name}</div>
     <p class="level-desc">${lvlText.desc}</p>
