@@ -545,6 +545,7 @@ const listeningQuestions = [
 const READING_POINTS = 2;
 const LISTENING_POINTS = 3;
 const MAX_POSSIBLE = readingQuestions.length*READING_POINTS + listeningQuestions.length*LISTENING_POINTS; // 66 + 60 = 126
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwfk0S9C-QpQuRe_Ym-ucvvoko7TQBb9mYtCbI1wMYRBd7qGq18zWctsFf4j02P7mIWJg/exec";
 
 const LEVELS = [
   {code:"INTRO", min:0,  max:4},
@@ -890,7 +891,8 @@ let state = {
   playCount:0,
   lang:"en",
   studentName:"",
-  studentEmail:""
+  studentEmail:"",
+  resultsSubmitted:false
 };
 
 function levelFor(score){
@@ -1061,6 +1063,7 @@ function renderQuestion(){
 function renderResults(){
   topRight.innerHTML = '';
   populateLangSelect();
+  submitResultsToSheet();
   const total = state.rScore + state.lScore;
   const lvl = levelFor(total);
   const lvlText = tLevel(lvl.code);
@@ -1127,6 +1130,44 @@ function renderResults(){
     </div>
     <canvas id="certCanvas" width="1600" height="1120" style="display:none;"></canvas>
   </div>`;
+}
+
+function submitResultsToSheet(){
+  if(state.resultsSubmitted) return;
+  state.resultsSubmitted = true;
+
+  const total = state.rScore + state.lScore;
+  const lvl = levelFor(total);
+  const lvlText = tLevel(lvl.code);
+  const rMax = state.rAnswered*READING_POINTS;
+  const lMax = state.lAnswered*LISTENING_POINTS;
+
+  const payload = {
+    name: state.studentName.trim(),
+    email: state.studentEmail.trim(),
+    language: state.lang,
+    levelCode: lvl.code,
+    levelName: lvlText.name,
+    readingScore: state.rScore,
+    readingMax: rMax,
+    listeningScore: state.lScore,
+    listeningMax: lMax,
+    combinedScore: total,
+    maxPossible: MAX_POSSIBLE,
+    questionsAnswered: state.rAnswered + state.lAnswered
+  };
+
+  // fire-and-forget: Apps Script web apps don't return CORS headers, so we
+  // use no-cors mode and never read the response. Any network failure here
+  // is swallowed silently — it must never interrupt the student's results screen.
+  try{
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(()=>{});
+  }catch(e){}
 }
 
 function buildResultsSummary(){
