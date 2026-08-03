@@ -968,8 +968,8 @@ function renderIntro(){
     <img class="book-covers" src="confidence-connections-books.jpg" alt="Confidence and Connections book series">
     <p class="lede">${t('introLede')}</p>
     <ul class="rule-list">
-      <li>${t('ruleReading')}</li>
-      <li>${t('ruleListening')}</li>
+      <li>${t('ruleReading').replace('{n}', READING_POINTS)}</li>
+      <li>${t('ruleListening').replace('{n}', LISTENING_POINTS)}</li>
       <li>${t('ruleStop')}</li>
       <li>${t('ruleNoBack')}</li>
       <li>${t('ruleTime')}</li>
@@ -995,7 +995,7 @@ function renderSectionIntro(kind){
   <div class="card fade-in">
     <span class="section-tag ${isListening?'listening':''}">${isListening?t('part2Listening'):t('part1Reading')}</span>
     <h1 class="hero">${isListening?t('listeningSectionTitle'):t('readingSectionTitle')}</h1>
-    <p class="lede">${isListening?t('listeningSectionLede'):t('readingSectionLede')}</p>
+    <p class="lede">${isListening?t('listeningSectionLede').replace('{n}', LISTENING_POINTS):t('readingSectionLede').replace('{n}', READING_POINTS)}</p>
     <button class="primary" onclick="${isListening?'startListening()':'goToQuestion()'}">${isListening?t('startListeningSection'):t('begin')}</button>
   </div>`;
 }
